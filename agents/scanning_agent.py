@@ -31,7 +31,7 @@ def build_scanning_agent():
                 ("user", last_msg.content if hasattr(last_msg, "content") else str(last_msg))
             ]
         }
-
+        enriched_inputs["messages"].extend(state["messages"])
         result = scanning_core.invoke(enriched_inputs)
         summary = "\n".join(m.content for m in result["messages"] if hasattr(m, "content"))
         scanning_msg = AIMessage(content=f"[Scanning]\n{summary}", name="Scanning")

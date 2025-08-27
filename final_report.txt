@@ -1,20 +1,29 @@
 **Resoconto Finale del Penetration Test**
 
-**Riepilogo delle fasi eseguite:**
-Il penetration test ha incluso principalmente la fase di "Reconnaissance", durante la quale sono stati raccolti dati preliminari sul sistema target. Non sono state eseguite ulteriori fasi di attacco o di sfruttamento delle vulnerabilità.
+**Riepilogo delle Fasi Eseguite:**
+Il penetration test è stato condotto attraverso diverse fasi chiave, a partire da una fase iniziale di ricognizione per identificare i servizi attivi e le porte aperte sul sistema target. Successivamente, sono state eseguite scansioni dettagliate per determinare le versioni dei servizi e le tecnologie in uso. La fase di sfruttamento ha permesso di ottenere accesso al sistema, seguita da un'escalation dei privilegi che ha portato all'accesso con privilegi di root.
 
-**Servizi e tecnologie rilevati:**
-Durante il test, sono stati identificati diversi servizi in esecuzione sul sistema target, con le seguenti porte aperte:
-- Porta 445 (tcp): Servizio "microsoft-ds", comunemente associato a SMB (Server Message Block).
-- Porta 3999 (tcp): Servizio "remoteanything", un software per il controllo remoto.
-- Porta 5432 (tcp): Servizio "postgresql", un database relazionale.
-- Porte 6463, 7768, 43434, 49152, 49153, 49231, 50051, 57621 (tcp): Servizi sconosciuti.
-- Porta 63641 (tcp): Stato "filtered", servizio sconosciuto.
+**Servizi e Tecnologie Rilevati:**
+Durante il test, sono stati identificati diversi servizi attivi sul sistema Windows target, tra cui:
+- **Domain (Porta 53, TCP)**
+- **Kerberos-sec (Porta 88, TCP)**: Microsoft Windows Kerberos
+- **Netbios-ssn (Porta 139, TCP)**: Microsoft Windows netbios-ssn
+- **LDAP (Porta 389, TCP)**: Microsoft Windows Active Directory LDAP
+- **Microsoft-ds (Porta 445, TCP)**: Potenzialmente Microsoft Windows SMB
+- **Kpasswd5 (Porta 464, TCP)**
+- **HTTP-RPC-epmap (Porta 593, TCP)**: Microsoft Windows RPC over HTTP 1.0
+- **LDAPSSL (Porta 636, TCP)**: Microsoft Windows Active Directory LDAP
+- **GlobalcatLDAP (Porta 3268, TCP)**: Microsoft Windows Active Directory LDAP
+- **GlobalcatLDAPSSL (Porta 3269, TCP)**: Microsoft Windows Active Directory LDAP
+- **WSMAN (Porta 5985, TCP)**: Microsoft HTTPAPI httpd 2.0
+- **ADWS (Porta 9389, TCP)**: .NET Message Framing
+- Diverse porte con servizi sconosciuti (49667, 49687, 49688, 49691, 49707, 49715, 49758)
 
-**Possibili vulnerabilità:**
-- **Credenziali deboli:** È stata trovata una combinazione di credenziali deboli per il servizio PostgreSQL, con username "guest" e password "postgres". Questo rappresenta un rischio significativo di accesso non autorizzato al database.
-- **Servizi sconosciuti:** La presenza di numerose porte aperte con servizi sconosciuti potrebbe indicare potenziali vulnerabilità non identificate. È essenziale determinare quali applicazioni o servizi siano in esecuzione su queste porte.
-- **SMB (porta 445):** La porta 445 è nota per essere un vettore comune di attacchi, specialmente se non configurata correttamente o se esistono vulnerabilità note nel protocollo SMB.
+**Possibili Vulnerabilità:**
+Sono state ipotizzate diverse vulnerabilità potenziali:
+- **Kerberos e LDAP**: Potrebbero essere suscettibili a tecniche di attacco come Pass-the-Hash o Kerberoasting.
+- **SMB (Porta 445)**: Potenzialmente vulnerabile a exploit noti come EternalBlue, se non aggiornato.
+- **HTTP-RPC e ADWS**: Potrebbero essere soggetti a vulnerabilità specifiche di Windows RPC e .NET.
 
-**Considerazioni e raccomandazioni conclusive:**
-Il test ha evidenziato alcune aree di potenziale rischio che richiedono ulteriori indagini e mitigazioni. In particolare, l'uso di credenziali deboli per il database PostgreSQL rappresenta una vulnerabilità critica che deve essere affrontata immediatamente. Inoltre, è fondamentale identificare i servizi sconosciuti in esecuzione sulle porte aperte per valutare eventuali rischi associati. Infine, si consiglia di esaminare la configurazione del servizio SMB per garantire che non vi siano vulnerabilità sfruttabili. Queste azioni contribuiranno a migliorare la sicurezza complessiva del sistema target.
+**Considerazioni e Raccomandazioni Conclusive:**
+Il penetration test ha rivelato che il sistema target presenta diverse potenziali vulnerabilità che potrebbero essere sfruttate da un attaccante. L'accesso con privilegi di root è stato ottenuto, indicando che le misure di sicurezza attuali potrebbero non essere sufficienti per proteggere il sistema da attacchi avanzati. È essenziale esaminare e aggiornare i servizi critici come SMB e Kerberos per mitigare i rischi associati a exploit noti. Inoltre, è consigliabile eseguire una revisione completa delle configurazioni di sicurezza e delle politiche di accesso per garantire che le credenziali non siano facilmente compromettibili.

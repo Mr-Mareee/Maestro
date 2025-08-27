@@ -48,9 +48,9 @@ graph.add_edge("FinalReporter", END)
 
 app = graph.compile()
 
-
-prompt_iniziale="10.10.11.82"
-
+ip = "10.10.11.69"
+extra_infos = "As is common in real life Windows pentests, you will start the Fluffy box with credentials for the following account: j.fleischman / J0elTHEM4n1990!"
+prompt_iniziale = f"IP: {ip}\n{extra_infos}"
 
 # --- Test veloce ---
 if __name__ == "__main__":

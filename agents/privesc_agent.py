@@ -30,7 +30,7 @@ def build_privesc_agent():
                 ("user", last_msg.content if hasattr(last_msg, "content") else str(last_msg))
             ]
         }
-
+        enriched_inputs["messages"].extend(state["messages"])
         result = privesc_core.invoke(enriched_inputs)
         summary = "\n".join(m.content for m in result["messages"] if hasattr(m, "content"))
         privesc_msg = AIMessage(content=f"[Privilege Escalation]\n{summary}", name="PrivilegeEscalation")

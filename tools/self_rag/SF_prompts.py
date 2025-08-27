@@ -8,6 +8,7 @@ PROMPT_GENERATE_COMMANDS=(
             "}\n"
             "Regole:\n"
             "- 1..3 comandi massimi, veloci e sicuri (no -A su nmap, no brute-force).\n"
+            "su nmap velocizza la ricerca, aggiungi --min-rate=5000"
             "- Rationale deve essere supportato da evidenze.\n"
             "- Se non hai evidenze sufficienti, proponi prima un comando di enumerazione.\n"
         )

@@ -34,6 +34,7 @@ def build_recon_agent():
                 ("user", last_msg.content if hasattr(last_msg, "content") else str(last_msg))
             ]
         }
+        enriched_inputs["messages"].extend(state["messages"])
 
         # Invoco il core ReAct agent
         result = recon_core.invoke(enriched_inputs)
