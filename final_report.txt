@@ -1,25 +1,20 @@
 **Resoconto Finale del Penetration Test**
 
-**Riepilogo delle Fasi Eseguite:**
-Il penetration test condotto sull'indirizzo IP 127.0.0.1 ha incluso principalmente la fase di "Reconnaissance". Durante questa fase, sono stati identificati i servizi attivi e le porte aperte sul sistema target. Non sono state eseguite ulteriori fasi di attacco o di sfruttamento delle vulnerabilità.
+**Riepilogo delle fasi eseguite:**
+Il penetration test ha incluso principalmente la fase di "Reconnaissance", durante la quale sono stati raccolti dati preliminari sul sistema target. Non sono state eseguite ulteriori fasi di attacco o di sfruttamento delle vulnerabilità.
 
-**Servizi e Tecnologie Rilevati:**
-Durante la scansione, sono stati rilevati diversi servizi attivi su porte TCP aperte. Di seguito l'elenco dei servizi identificati:
+**Servizi e tecnologie rilevati:**
+Durante il test, sono stati identificati diversi servizi in esecuzione sul sistema target, con le seguenti porte aperte:
+- Porta 445 (tcp): Servizio "microsoft-ds", comunemente associato a SMB (Server Message Block).
+- Porta 3999 (tcp): Servizio "remoteanything", un software per il controllo remoto.
+- Porta 5432 (tcp): Servizio "postgresql", un database relazionale.
+- Porte 6463, 7768, 43434, 49152, 49153, 49231, 50051, 57621 (tcp): Servizi sconosciuti.
+- Porta 63641 (tcp): Stato "filtered", servizio sconosciuto.
 
-- Porta 445: Servizio "microsoft-ds" (tipicamente associato a SMB/CIFS su sistemi Windows).
-- Porta 5432: Servizio "postgresql" (database relazionale open-source).
-- Porta 9000: Servizio "cslistener".
-- Porta 9001: Servizio "tor-orport" (relativo alla rete Tor).
-- Porta 9002: Servizio "dynamid".
+**Possibili vulnerabilità:**
+- **Credenziali deboli:** È stata trovata una combinazione di credenziali deboli per il servizio PostgreSQL, con username "guest" e password "postgres". Questo rappresenta un rischio significativo di accesso non autorizzato al database.
+- **Servizi sconosciuti:** La presenza di numerose porte aperte con servizi sconosciuti potrebbe indicare potenziali vulnerabilità non identificate. È essenziale determinare quali applicazioni o servizi siano in esecuzione su queste porte.
+- **SMB (porta 445):** La porta 445 è nota per essere un vettore comune di attacchi, specialmente se non configurata correttamente o se esistono vulnerabilità note nel protocollo SMB.
 
-Inoltre, sono state rilevate numerose porte aperte con servizi non identificati, tra cui le porte 5367, 6463, 7768, 9003, 9004, 43434, 49152, 49155, 49211, 50051, 51126, e 57621.
-
-**Possibili Vulnerabilità:**
-Al momento, non sono state formulate ipotesi di vulnerabilità specifiche. Tuttavia, la presenza di numerose porte aperte con servizi sconosciuti rappresenta un potenziale rischio di sicurezza, in quanto potrebbero ospitare servizi vulnerabili o mal configurati.
-
-**Considerazioni e Raccomandazioni Conclusive:**
-Il test ha evidenziato la presenza di diversi servizi attivi, alcuni dei quali non identificati, che potrebbero rappresentare un rischio per la sicurezza del sistema. È consigliabile eseguire una scansione di versione sui servizi noti per ottenere maggiori dettagli sulle versioni in uso e identificare eventuali vulnerabilità note. Inoltre, è importante investigare le porte sconosciute per determinare i servizi in esecuzione e valutare la loro sicurezza.
-
-L'assenza di accesso a shell utente e privilegi elevati indica che, al momento, non sono state sfruttate vulnerabilità critiche. Tuttavia, l'analisi dovrebbe essere approfondita utilizzando strumenti di enumerazione specifici per i servizi noti, come PostgreSQL, per garantire che non vi siano configurazioni deboli o vulnerabilità non rilevate.
-
-In sintesi, il sistema presenta un profilo di rischio potenziale a causa delle numerose porte aperte e dei servizi non identificati. Un'ulteriore analisi e monitoraggio continuo sono essenziali per mantenere la sicurezza del sistema.
+**Considerazioni e raccomandazioni conclusive:**
+Il test ha evidenziato alcune aree di potenziale rischio che richiedono ulteriori indagini e mitigazioni. In particolare, l'uso di credenziali deboli per il database PostgreSQL rappresenta una vulnerabilità critica che deve essere affrontata immediatamente. Inoltre, è fondamentale identificare i servizi sconosciuti in esecuzione sulle porte aperte per valutare eventuali rischi associati. Infine, si consiglia di esaminare la configurazione del servizio SMB per garantire che non vi siano vulnerabilità sfruttabili. Queste azioni contribuiranno a migliorare la sicurezza complessiva del sistema target.

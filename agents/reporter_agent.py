@@ -11,13 +11,14 @@ from .state import AgentState
 # ---- schema base del report condiviso ----
 def _default_report():
     return {
-        "target": None,
+        "target": '',
         "phases": [],     # es: ["Reconnaissance", "Scanning"]
         "found_credentials":[],                    
         "services": [],                       # es: [{"port":80,"service":"http","version":"Apache 2.4.18"}]
         "web_findings": {"dirs": [], "alerts": []},
         "vuln_hypotheses": [],                # es: ["Apache 2.4.18 outdated"]
         "access": {"user_shell": False, "privs": "none"},
+        "OS":'',
         "flags_found": 0,
         "notes": [],                          # brevi note libere
         "next_phase_hint": None               # suggerimento dell'agente di fase

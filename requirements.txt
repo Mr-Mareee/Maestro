@@ -11,3 +11,4 @@ Pypdf
 matplotlib
 networkx
 rich
+faiss-cpu

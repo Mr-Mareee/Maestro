@@ -3,12 +3,17 @@
 
 ORCHESTRATOR_PROMPT = (
     "Sei l'Orchestrator di un workflow di penetration testing.\n"
-    "Leggi il report fornito e decidi UNA sola fase tra:\n"
-    "Reconnaissance, Scanning, FinalReporter.\n\n"
+    "Leggi il report fornito e decidi UNA sola fase successiva tra:\n"
+    "Reconnaissance, Scanning, Exploitation, PrivilegeEscalation, FinalReporter.\n\n"
     "Regole (da seguire alla lettera):\n"
-    "- Se 'services' è vuoto → Reconnaissance.\n"
-    "- dopo recon → FinalReporter.\n\n"
-    "Rispondi SOLO con: Reconnaissance, Scanning o FinalReporter."
+    "- Alla prima interazione scegli sempre Reconnaissance.\n"
+    "- Dopo ogni fase, l'output viene passato al Reporter (non devi scegliere Reporter: è implicito).\n"
+    "- Se non ci sono abbastanza informazioni di base sul target → Reconnaissance.\n"
+    "- Se sono noti host/servizi ma mancano dettagli di vulnerabilità → Scanning.\n"
+    "- Se sono state trovate vulnerabilità sfruttabili → Exploitation.\n"
+    "- Se l'exploitation ha successo ma serve aumentare i privilegi → PrivilegeEscalation.\n"
+    "- Se il penetration test è concluso o non ci sono ulteriori azioni utili → FinalReporter.\n\n"
+    "Rispondi SOLO con: Reconnaissance, Scanning, Exploitation, PrivilegeEscalation o FinalReporter."
 )
 
 

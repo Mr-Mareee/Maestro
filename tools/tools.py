@@ -1,6 +1,6 @@
 from langchain_core.tools import tool
 from .terminal_tool import terminal_tool
-from .self_rag_tool import self_rag_tool
+from .self_rag.self_rag_tool import self_rag_tool
 
 @tool
 def retriever_tool(query:str) -> str:

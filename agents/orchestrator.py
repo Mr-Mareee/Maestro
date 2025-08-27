@@ -28,7 +28,6 @@ def orchestrator(state: AgentState) -> AgentState:
 
     # Puliamo l'output per estrarre lo stato
     decision = response.content.strip()
-    print(f"[Orchestrator] LLM output: {decision}")
     if decision not in [
         "Reconnaissance",
         "Scanning",
@@ -37,7 +36,6 @@ def orchestrator(state: AgentState) -> AgentState:
         "FinalReporter"
     ]:
         decision = "Reconnaissance"  # fallback conservativo
-    print(f"[Orchestrator] decisione: {decision}")
     return {"messages": [decision]}
 
 

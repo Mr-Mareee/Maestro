@@ -10,13 +10,8 @@ from .final_reporter import final_reporter
 from .scanning_agent import build_scanning_agent
 from .exploitation_agent import build_exploit_agent
 from .privesc_agent import build_privesc_agent
+from .state import AgentState
 load_dotenv()
-
-# --- Stato condiviso ---
-class AgentState(TypedDict):
-    messages: Annotated[Sequence[BaseMessage], add_messages]
-    shared_report : str 
-
 
 graph = StateGraph(AgentState)
 
@@ -54,9 +49,7 @@ graph.add_edge("FinalReporter", END)
 app = graph.compile()
 
 
-prompt_iniziale="Inizia il penetration test su 127.0.0.1, " \
-"le uniche credenziali note sono user:guest, pass:guest su" \
-" postgres e gianni:gianni su ssh."
+prompt_iniziale="10.10.11.82"
 
 
 # --- Test veloce ---
