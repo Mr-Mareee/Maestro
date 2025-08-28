@@ -17,6 +17,9 @@ ORCHESTRATOR_PROMPT = (
     "Rispondi SOLO con: Reconnaissance, Scanning, Exploitation, PrivilegeEscalation o FinalReporter."
 )
 
+MEMORY_CLEANER_PROMPT = ("Sei un summarizer per un penetration test.\n"
+                "Riassumi i messaggi seguenti in modo conciso, mantenendo solo\n"
+                "informazioni tecniche utili (servizi, vulnerabilità, credenziali, comandi eseguiti).")
 
 ####### QUI DEVO METTERE TUTTI I PROMPT PER I REPORTER #########
 

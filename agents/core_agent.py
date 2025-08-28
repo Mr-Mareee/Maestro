@@ -11,6 +11,7 @@ from .scanning_agent import build_scanning_agent
 from .exploitation_agent import build_exploit_agent
 from .privesc_agent import build_privesc_agent
 from .state import AgentState
+from .memory_cleaner import memory_cleaner
 load_dotenv()
 
 graph = StateGraph(AgentState)
@@ -22,7 +23,7 @@ graph.add_node("Exploitation", build_exploit_agent())
 graph.add_node("PrivilegeEscalation", build_privesc_agent())
 graph.add_node("Reporter", reporter_agent)
 graph.add_node("FinalReporter", final_reporter)
-
+graph.add_node("MemoryCleaner", memory_cleaner)
 graph.set_entry_point("Reporter")
 
 graph.add_conditional_edges(
@@ -42,7 +43,8 @@ graph.add_edge("Scanning", "Reporter")
 graph.add_edge("Exploitation", "Reporter")
 graph.add_edge("PrivilegeEscalation", "Reporter")
 
-graph.add_edge("Reporter", "Orchestrator")
+graph.add_edge("Reporter", "MemoryCleaner")
+graph.add_edge("MemoryCleaner","Orchestrator")
 
 graph.add_edge("FinalReporter", END)
 
