@@ -59,8 +59,8 @@ def execute_shell_command(command: str) -> str:
 terminal_tool = StructuredTool.from_function(
     func=execute_shell_command,
     name="terminal_tool",
-    description = """Esegue comandi di shell sul sistema target.
-    Usalo per ricognizione, scanning, enumerazione, exploit e privilege escalation.
+    description = """Esegue comandi NON INTERATTIVI di shell sul sistema target.
+    Usalo per ricognizione, scanning, enumerazione, exploit e privilege escalation applicando, dove possibili, flag di non interattività.
     Costruisci comandi validi e completi (es. 'nmap -sV 10.10.10.1')."""
     ,
     args_schema=ShellCommandInput

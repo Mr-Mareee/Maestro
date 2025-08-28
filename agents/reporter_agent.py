@@ -2,9 +2,9 @@
 import json, os, re
 from typing import TypedDict, Annotated, Sequence
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_core.messages import SystemMessage, HumanMessage,BaseMessage, AIMessage
 from langgraph.graph.message import add_messages
-from langchain_core.messages import BaseMessage
+
 from prompts import REPORTER_AGENT_PROMPT
 from .state import AgentState
 
@@ -20,7 +20,8 @@ def _default_report():
         "access": {"user_shell": False, "privs": "none"},
         "OS":'',
         "flags_found": 0,
-        "notes": [],                          # brevi note libere
+        "notes": [],                         
+        "wrong_paths":[],
         "next_phase_hint": None               # suggerimento dell'agente di fase
     }
 
@@ -81,10 +82,14 @@ def reporter_agent(state: AgentState) -> AgentState:
             except Exception:
                 return None
         return None
+    updated = _try_parse_json(raw) or prev_report  
 
-    updated = _try_parse_json(raw) or prev_report  # fallback: se non JSON valido, tieni il precedente
+    new_messages = list(state["messages"])
+    new_messages.append(AIMessage(content="[Reporter] report aggiornato", name="Reporter"))
+
     print(f"[Reporter] report aggiornato: {json.dumps(updated, ensure_ascii=False)}")
+
     return {
-        "messages": ["[Reporter] report aggiornato"],
+        "messages": new_messages,
         "shared_report": json.dumps(updated, ensure_ascii=False)
     }
