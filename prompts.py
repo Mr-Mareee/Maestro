@@ -87,7 +87,7 @@ RECON_AGENT_PROMPT = (
     "- Parti sempre con uno scan e poi vedi cosa ti viene ordinato da fare dopo.\n"
     "- Analizza l'output e aggiorna il tuo piano.\n"
     "- Continua a iterare finché non hai trovato abbastanza servizi e informazioni di riconoscimento.\n"
-    "- Fermati solo quando hai un quadro chiaro delle porte e delle tecnologie principali.\n\n"
+    "- Fermati dopo massim 5 comandi.\n\n"
     "Alla fine, produci un Final Answer riassuntivo con:\n"
     "* Servizi trovati\n"
     "* Tecnologie\n"

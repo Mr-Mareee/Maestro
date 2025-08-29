@@ -13,7 +13,7 @@ def build_recon_agent():
     - Riceve dallo state il `shared_report` (solo per contesto)
     - NON aggiorna lo shared_report (compito del Reporter)
     """
-    model = ChatOpenAI(model="gpt-4o", temperature=0)
+    model = ChatOpenAI(model="gpt-5", temperature=0)
 
     # Core ReAct agent (lavora su messages)
     recon_core = create_react_agent(

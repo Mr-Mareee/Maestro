@@ -23,7 +23,7 @@ def orchestrator(state: AgentState) -> AgentState:
     human_prompt = HumanMessage(content=f"Report condiviso:\n{shared_report}")
 
     # Invochiamo l'LLM
-    model = ChatOpenAI(model="gpt-4o", temperature=0)
+    model = ChatOpenAI(model="gpt-5", temperature=0)
     response = model.invoke([system_prompt, human_prompt])
 
     # Puliamo l'output per estrarre lo stato

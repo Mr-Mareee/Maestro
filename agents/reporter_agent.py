@@ -22,6 +22,7 @@ def _default_report():
         "flags_found": 0,
         "notes": [],                         
         "wrong_paths":[],
+        "executed_commands": [],
         "next_phase_hint": None               # suggerimento dell'agente di fase
     }
 
@@ -47,7 +48,7 @@ def reporter_agent(state: AgentState) -> AgentState:
     - aggiorna il report (merge, dedup, niente invenzioni)
     - restituisce lo shared_report aggiornato nello state
     """
-    model = ChatOpenAI(model="gpt-4o", temperature=0)
+    model = ChatOpenAI(model="gpt-5", temperature=0)
 
     prev_report = _safe_load_report(state.get("shared_report", ""))
     last_msg = state["messages"][-1]

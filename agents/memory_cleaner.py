@@ -20,7 +20,7 @@ def memory_cleaner(messages: List[BaseMessage], keep_last: int = 3) -> List[Base
     )
 
     # chiamo un LLM per riassumere
-    model = ChatOpenAI(model="gpt-4o", temperature=0)
+    model = ChatOpenAI(model="gpt-5", temperature=0)
     system = SystemMessage(
         content=MEMORY_CLEANER_PROMPT
     )

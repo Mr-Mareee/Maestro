@@ -13,7 +13,7 @@ def final_reporter(state: AgentState) -> AgentState:
     - Salva il report su file .txt
     - Restituisce un messaggio finale per chiudere il grafo
     """
-    model = ChatOpenAI(model="gpt-4o", temperature=0)
+    model = ChatOpenAI(model="gpt-5", temperature=0)
 
     shared_report = state.get("shared_report", "{}")
     try:

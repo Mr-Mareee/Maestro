@@ -81,7 +81,7 @@ class SelfRAG:
     def __init__(
         self,
         embedding_model: str = "text-embedding-3-small",
-        llm_model: str = "gpt-4o",
+        llm_model: str = "gpt-5",
         persist_root: str = "vector_dbs",
         k: int = 5,
         rel_threshold: float = 0.0
