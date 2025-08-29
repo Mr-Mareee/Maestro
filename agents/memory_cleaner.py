@@ -1,15 +1,20 @@
 # agents/memory_cleaner.py
 from typing import List
-from langchain_openai import ChatOpenAI
+from models import get_model
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage
+from .state import AgentState
 from prompts import MEMORY_CLEANER_PROMPT
-def memory_cleaner(messages: List[BaseMessage], keep_last: int = 3) -> List[BaseMessage]:
+import json
+
+def memory_cleaner(state: AgentState) -> AgentState:
     """
     Dopo il Reporter, riassume i messaggi precedenti in un unico blocco.
     Mantiene solo gli ultimi `keep_last` intatti per continuità.
     """
+    messages = state.get("messages", [])
+    keep_last = 3
     if len(messages) <= keep_last:
-        return messages
+        return state
 
     old_msgs = messages[:-keep_last]
     recent_msgs = messages[-keep_last:]
@@ -20,7 +25,7 @@ def memory_cleaner(messages: List[BaseMessage], keep_last: int = 3) -> List[Base
     )
 
     # chiamo un LLM per riassumere
-    model = ChatOpenAI(model="gpt-5", temperature=0)
+    model = get_model(temperature=0)
     system = SystemMessage(
         content=MEMORY_CLEANER_PROMPT
     )
@@ -29,9 +34,10 @@ def memory_cleaner(messages: List[BaseMessage], keep_last: int = 3) -> List[Base
     summary = model.invoke([system, human])
     summary_text = getattr(summary, "content", "").strip()
 
-    # ricostruisco la nuova lista: summary + recenti
-    cleaned = [SystemMessage(content=f"[MemoryCleaner Summary]\n{summary_text}")]
-    cleaned.extend(recent_msgs)
+    cleaned_state = dict(state)
+    cleaned_state["messages"] = [
+        SystemMessage(content=f"[MemoryCleaner Summary]\n{summary_text}")
+    ] + recent_msgs
 
-    print(f"[MemoryCleaner] Riassunti {len(old_msgs)} messaggi in un summary compatto.")
-    return cleaned
+    print('[MemoryCleaner] questi sono i nuovi messaggi'+json.dumps(cleaned_state["messages"], indent=2, ensure_ascii=False))
+    return cleaned_state

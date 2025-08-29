@@ -1,4 +1,4 @@
-from langchain_openai import ChatOpenAI
+from models import get_model
 from langchain_core.messages import SystemMessage, HumanMessage
 from prompts import ORCHESTRATOR_PROMPT
 from typing import Annotated, Sequence, TypedDict
@@ -23,7 +23,7 @@ def orchestrator(state: AgentState) -> AgentState:
     human_prompt = HumanMessage(content=f"Report condiviso:\n{shared_report}")
 
     # Invochiamo l'LLM
-    model = ChatOpenAI(model="gpt-5", temperature=0)
+    model = get_model(temperature=0)
     response = model.invoke([system_prompt, human_prompt])
 
     # Puliamo l'output per estrarre lo stato

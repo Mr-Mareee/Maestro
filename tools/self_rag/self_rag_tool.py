@@ -81,7 +81,7 @@ class SelfRAG:
     def __init__(
         self,
         embedding_model: str = "text-embedding-3-small",
-        llm_model: str = "gpt-5",
+        llm_model: str = "gpt-4o-mini",
         persist_root: str = "vector_dbs",
         k: int = 5,
         rel_threshold: float = 0.0
@@ -307,10 +307,7 @@ class SelfRAG:
 
         # 6) Utility grading
         utility = self.utility_grader(query, json.dumps(refined, ensure_ascii=False))
-        print('*'*20)
-        print(f"[SelfRAG] Retrieved {len(passages)} passages. Supported: {supported}. Utility: {utility}/5.")
-        print(f"[SelfRAG] Commands: {refined.get('commands', [])}. Notes: {refined.get('notes', '')}")
-        print('*'*20)
+
         return {
             "commands": refined.get("commands", []),
             "supported": supported,

@@ -1,5 +1,5 @@
 # agents/scanning_agent.py
-from langchain_openai import ChatOpenAI
+from models import get_model
 from langgraph.prebuilt import create_react_agent
 from tools.tools import tools
 from .state import AgentState
@@ -13,7 +13,7 @@ def build_scanning_agent():
     - Usa tool (es. nmap -sV, searchsploit, ecc.)
     - NON aggiorna lo shared_report (compito del Reporter)
     """
-    model = ChatOpenAI(model="gpt-5", temperature=0)
+    model = get_model(temperature=0)
 
     scanning_core = create_react_agent(
         model,

@@ -2,6 +2,7 @@ langgraph
 langchain
 ipython
 langchain_openai
+langchain_anthropic
 langchain_community
 dotenv
 typing

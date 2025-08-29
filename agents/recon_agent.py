@@ -1,9 +1,8 @@
-# agents/recon_agent.py
-from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
 from tools.tools import tools
 from .state import AgentState
 from prompts import RECON_AGENT_PROMPT
+from models import get_model
 from langchain_core.messages import AIMessage
 
 def build_recon_agent():
@@ -13,7 +12,7 @@ def build_recon_agent():
     - Riceve dallo state il `shared_report` (solo per contesto)
     - NON aggiorna lo shared_report (compito del Reporter)
     """
-    model = ChatOpenAI(model="gpt-5", temperature=0)
+    model = get_model(temperature=0)
 
     # Core ReAct agent (lavora su messages)
     recon_core = create_react_agent(
@@ -22,7 +21,6 @@ def build_recon_agent():
         prompt=RECON_AGENT_PROMPT,
     )
 
-    # Wrapper che inietta il contesto ma lascia l'aggiornamento del report al Reporter
     def recon_with_context(state: AgentState) -> AgentState:
         shared_report = state.get("shared_report", "Nessuna informazione precedente.")
         last_msg = state["messages"][-1]

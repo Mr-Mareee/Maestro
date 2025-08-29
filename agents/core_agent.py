@@ -50,6 +50,9 @@ graph.add_edge("FinalReporter", END)
 
 app = graph.compile()
 
+
+#se devo testare in locale
+#ip='127.0.0.1'
 ip = "10.10.11.82"
 extra_infos = ""
 prompt_iniziale = f"IP: {ip}\n{extra_infos}"

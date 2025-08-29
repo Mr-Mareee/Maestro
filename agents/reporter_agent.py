@@ -1,7 +1,7 @@
 # agents/reporter_agent.py  (oppure incolla in core_agent.py al posto del reporter attuale)
 import json, os, re
 from typing import TypedDict, Annotated, Sequence
-from langchain_openai import ChatOpenAI
+from models import get_model
 from langchain_core.messages import SystemMessage, HumanMessage,BaseMessage, AIMessage
 from langgraph.graph.message import add_messages
 
@@ -48,7 +48,7 @@ def reporter_agent(state: AgentState) -> AgentState:
     - aggiorna il report (merge, dedup, niente invenzioni)
     - restituisce lo shared_report aggiornato nello state
     """
-    model = ChatOpenAI(model="gpt-5", temperature=0)
+    model = get_model(temperature=0)
 
     prev_report = _safe_load_report(state.get("shared_report", ""))
     last_msg = state["messages"][-1]

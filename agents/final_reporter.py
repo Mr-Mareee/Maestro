@@ -1,6 +1,6 @@
 # agents/final_reporter.py
 import json
-from langchain_openai import ChatOpenAI
+from models import get_model
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from .state import AgentState
 from prompts import FINAL_REPORTER_PROMPT
@@ -13,7 +13,7 @@ def final_reporter(state: AgentState) -> AgentState:
     - Salva il report su file .txt
     - Restituisce un messaggio finale per chiudere il grafo
     """
-    model = ChatOpenAI(model="gpt-5", temperature=0)
+    model = get_model(temperature=0)
 
     shared_report = state.get("shared_report", "{}")
     try:
