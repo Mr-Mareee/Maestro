@@ -33,6 +33,7 @@ def orchestrator(state: AgentState) -> AgentState:
         "Scanning",
         "Exploitation",
         "PrivilegeEscalation",
+        "WebScanner",
         "FinalReporter"
     ]:
         decision = "Reconnaissance"  # fallback conservativo
@@ -55,6 +56,8 @@ def route_from_orchestrator(state: AgentState):
         return "to_exploit"
     elif "Privilege" in last:
         return "to_priv"
+    elif "WebScanner" in last:
+        return "to_web_scan"
     elif "final_report" in last or "FinalReporter" in last:
         return "to_final_report"
     else:

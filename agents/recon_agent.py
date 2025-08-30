@@ -4,6 +4,20 @@ from .state import AgentState
 from prompts import RECON_AGENT_PROMPT
 from models import get_model
 from langchain_core.messages import AIMessage
+def extract_summary(messages) -> str:
+    """Estrae contenuto testuale dai messaggi, appiattendo liste e forzando in stringa."""
+    parts = []
+    def _flatten(msgs):
+        for m in msgs:
+            if isinstance(m, list):
+                _flatten(m)
+            elif hasattr(m, "content"):
+                parts.append(str(m.content))
+            else:
+                parts.append(str(m))
+    _flatten(messages)
+    return "\n".join(parts)
+
 
 def build_recon_agent():
     """
@@ -36,7 +50,10 @@ def build_recon_agent():
 
         # Invoco il core ReAct agent
         result = recon_core.invoke(enriched_inputs)
-        summary = "\n".join(m.content for m in result["messages"] if hasattr(m, "content"))
+        
+
+        summary = extract_summary(result["messages"])
+
         recon_msg = AIMessage(content=f"[Reconnaissance]\n{summary}", name="Reconnaissance")
         # Ritorno solo i messaggi generati, senza toccare lo shared_report
         return {

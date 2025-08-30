@@ -64,7 +64,7 @@ class RetrievalResult:
 class SelfRAGInput(BaseModel):
     query: str = Field(description="Query dell'agente.")
     shared_report: str = Field(description="Report condiviso (JSON o testo).")
-    agent_role: str = Field(description="Ruolo agente che invoca (Reconnaissance, Scanning, Exploitation, PrivEsc).")
+    agent_role: str = Field(description="Ruolo agente che invoca (Reconnaissance, Scanning, Exploitation, PrivEsc, WebScanner).")
 
 
 # ------------------------------ Self-RAG -----------------------------
@@ -338,7 +338,7 @@ class SelfRAG:
 self_rag_tool = StructuredTool.from_function(
     func=SelfRAG().run,
     name="self_rag_tool",
-    description="🔍 SELF-RAG TOOL - Suggerisce comandi utili per la fase di reconnaissance.",
+    description="🔍 SELF-RAG TOOL - Suggerisce comandi utili per il penetration testing.",
     args_schema=SelfRAGInput
 )
 if __name__ == "__main__":

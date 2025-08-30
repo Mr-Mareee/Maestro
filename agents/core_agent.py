@@ -12,6 +12,7 @@ from .exploitation_agent import build_exploit_agent
 from .privesc_agent import build_privesc_agent
 from .state import AgentState
 from .memory_cleaner import memory_cleaner
+from .web_scanner_agent import build_web_scanner_agent
 load_dotenv()
 
 graph = StateGraph(AgentState)
@@ -21,6 +22,8 @@ graph.add_node("Reconnaissance", build_recon_agent() )
 graph.add_node("Scanning", build_scanning_agent())
 graph.add_node("Exploitation", build_exploit_agent())
 graph.add_node("PrivilegeEscalation", build_privesc_agent())
+graph.add_node("WebScanner", build_web_scanner_agent())
+
 graph.add_node("Reporter", reporter_agent)
 graph.add_node("FinalReporter", final_reporter)
 graph.add_node("MemoryCleaner", memory_cleaner)
@@ -34,6 +37,7 @@ graph.add_conditional_edges(
         "to_scan": "Scanning",
         "to_exploit": "Exploitation",
         "to_priv": "PrivilegeEscalation",
+        "to_web_scan": "WebScanner",
         "to_final_report": "FinalReporter",
     },
 )
@@ -42,6 +46,7 @@ graph.add_edge("Reconnaissance", "Reporter")
 graph.add_edge("Scanning", "Reporter")
 graph.add_edge("Exploitation", "Reporter")
 graph.add_edge("PrivilegeEscalation", "Reporter")
+graph.add_edge("WebScanner", "Reporter")
 
 graph.add_edge("Reporter", "MemoryCleaner")
 graph.add_edge("MemoryCleaner","Orchestrator")
@@ -53,8 +58,8 @@ app = graph.compile()
 
 #se devo testare in locale
 #ip='127.0.0.1'
-ip = "10.10.11.82"
-extra_infos = ""
+ip = "10.10.11.69"
+extra_infos = "As is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!"
 prompt_iniziale = f"IP: {ip}\n{extra_infos}"
 
 # --- Test veloce ---

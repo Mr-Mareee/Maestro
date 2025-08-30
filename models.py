@@ -1,8 +1,8 @@
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 
-#provider="openai"
-provider="anthropic"
+provider="openai"
+#provider="anthropic"
 def get_model(temperature: float = 0):
     """
     Ritorna un modello LLM in base al provider scelto.
@@ -11,7 +11,7 @@ def get_model(temperature: float = 0):
     """
     if provider == "openai":
         return ChatOpenAI(
-            model="gpt-4o",
+            model="gpt-5",
             temperature=temperature
         )
     elif provider == "anthropic":
