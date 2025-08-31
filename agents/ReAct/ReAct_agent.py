@@ -1,7 +1,7 @@
 from langgraph.prebuilt import create_react_agent
 from tools.tools import tools
 from ..state import AgentState
-from prompts import RECON_AGENT_PROMPT
+from prompts import prompts_agent
 from models import get_model
 from langchain_core.messages import AIMessage
 from langgraph.graph.message import add_messages
@@ -21,9 +21,9 @@ def extract_summary(messages) -> str:
     return "\n".join(parts)
 
 
-def build_recon_agent():
+def build_react_agent(name):
     """
-    Recon Agent come ReAct.
+    ReAct agent.
     - Usa i tool (terminal_tool, self_rag_tool, ecc.)
     - Legge lo shared_report come contesto
     - Produce UN SOLO messaggio finale e lo aggiunge allo storico
@@ -35,17 +35,16 @@ def build_recon_agent():
     recon_core = create_react_agent(
         model,
         tools=tools,
-        prompt=RECON_AGENT_PROMPT,
+        prompt=prompts_agent[name],
     )
 
-    def recon_with_context(state: AgentState) -> AgentState:
+    def agent_with_context(state: AgentState) -> AgentState:
         shared_report = state.get("shared_report", "Nessuna informazione precedente.")
-        messages = state.get("messages", [])
 
         # Prepara input per il ReAct agent
         enriched_inputs = {
             "messages": [
-                ("user", f"Contesto attuale:\n{shared_report}\n\nProcedi con la fase di reconnaissance.")
+                ("user", f"Contesto attuale:\n{shared_report}\n\nProcedi con la tua fase.")
             ]
         }
 
@@ -56,15 +55,15 @@ def build_recon_agent():
         summary = result['messages'][-1].content if result['messages'] else "Nessun output generato."
 
         # Crea il messaggio finale dell'agente
-        recon_msg = AIMessage(
-            content=f"[Reconnaissance]\n{summary}",
-            name="Reconnaissance"
+        agent_considerations = AIMessage(
+            content=f"[{name}]\n{summary}",
+            name=name
         )
 
         new_state = dict(state)
-        new_state["messages"] = add_messages(state["messages"], recon_msg)
+        new_state["messages"] = add_messages(state["messages"], agent_considerations)
         new_state["shared_report"] = shared_report
 
         return new_state
 
-    return recon_with_context
+    return agent_with_context

@@ -1,9 +1,11 @@
 # agents/memory_cleaner.py
 from typing import List
 from models import get_model
-from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage
+from langchain_core.messages import SystemMessage,AIMessage, HumanMessage
 from ..state import AgentState
 from prompts import MEMORY_CLEANER_PROMPT
+from langgraph.graph.message import add_messages
+
 import json
 
 def memory_cleaner(state: AgentState) -> AgentState:
@@ -12,7 +14,7 @@ def memory_cleaner(state: AgentState) -> AgentState:
     Mantiene solo gli ultimi `keep_last` intatti per continuità.
     """
     messages = state.get("messages", [])
-    keep_last = 3
+    keep_last = 2
     if len(messages) <= keep_last:
         return state
 
@@ -29,15 +31,17 @@ def memory_cleaner(state: AgentState) -> AgentState:
     system = SystemMessage(
         content=MEMORY_CLEANER_PROMPT
     )
-    human = HumanMessage(content=old_text[:6000])  # cutoff di sicurezza
+    human = HumanMessage(content=old_text)  # cutoff di sicurezza
 
     summary = model.invoke([system, human])
     summary_text = getattr(summary, "content", "").strip()
 
     cleaned_state = dict(state)
-    cleaned_state["messages"] = [
-        SystemMessage(content=f"[MemoryCleaner Summary]\n{summary_text}")
-    ] + recent_msgs
+    cleaned_state["messages"] = add_messages(AIMessage(content=f"[MemoryCleaner Summary]\n{summary_text}"),recent_msgs)
+    print('MEMORY CLEANER')
+    print('*'*20)
+    print(cleaned_state)
+    print('*'*20)
+    print('MEMORY CLEANER')
 
-    print('[MemoryCleaner] questi sono i nuovi messaggi'+json.dumps(cleaned_state["messages"], indent=2, ensure_ascii=False))
     return cleaned_state

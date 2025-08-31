@@ -84,13 +84,14 @@ def reporter_agent(state: AgentState) -> AgentState:
                 return None
         return None
     updated = _try_parse_json(raw) or prev_report  
-
-    new_messages = list(state["messages"])
-    new_messages.append(AIMessage(content="[Reporter] report aggiornato", name="Reporter"))
-
+    
+    cleaned_state = dict(state)
+    cleaned_state["shared_report"] = json.dumps(updated, ensure_ascii=False)
     print(f"[Reporter] report aggiornato: {json.dumps(updated, ensure_ascii=False)}")
+    print('REPORTER')
+    print('*'*20)
+    print(cleaned_state)
+    print('*'*20)
+    print('REPORTER')
 
-    return {
-        "messages": new_messages,
-        "shared_report": json.dumps(updated, ensure_ascii=False)
-    }
+    return cleaned_state

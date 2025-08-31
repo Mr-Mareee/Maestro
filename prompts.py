@@ -18,10 +18,25 @@ ORCHESTRATOR_PROMPT = (
     "Rispondi SOLO con: Reconnaissance, Scanning, Exploitation, PrivilegeEscalation,WebScanner o FinalReporter."
 )
 
-MEMORY_CLEANER_PROMPT = ("Sei un summarizer per un penetration test.\n"
-                "Riassumi i messaggi seguenti in modo conciso, mantenendo solo\n"
-                "informazioni tecniche utili (servizi, vulnerabilità, credenziali, comandi eseguiti).\n"
-                )
+MEMORY_CLEANER_PROMPT = (
+    "Sei il MemoryCleaner di un workflow di penetration testing multi-agente.\n\n"
+    "Hai ricevuto una sequenza di messaggi precedenti (comandi, risultati, note, report).\n"
+    "Il tuo compito è:\n"
+    "- Riassumere solo le informazioni rilevanti e verificate.\n"
+    "- Mantenere evidenze chiave: target, credenziali trovate, comandi eseguiti, risultati osservati, errori/fallimenti, vulnerabilità note.\n"
+    "- Evitare ridondanze: se un fatto è già stato registrato, riportalo una sola volta.\n"
+    "- Evidenziare eventuali fallimenti e la loro causa (es. 'SYN scan fallita: mancavano privilegi root').\n"
+    "- Limitare il testo a max 150-200 parole.\n"
+    "- Restituisci l'output come un breve riassunto strutturato con sezioni fisse:\n\n"
+    "[MemoryCleaner Summary]\n"
+    "- Target:\n"
+    "- Credenziali:\n"
+    "- Comandi eseguiti e risultati:\n"
+    "- Servizi individuati:\n"
+    "- Vulnerabilità note:\n"
+    "- Errori o limitazioni osservate:\n"
+)
+
 
 
 ####### QUI DEVO METTERE TUTTI I PROMPT PER I REPORTER #########
@@ -69,6 +84,7 @@ SCANNING_AGENT_PROMPT = (
     "- Evita comandi troppo invasivi o che richiedono molto tempo.\n"
     "- Continua a iterare finché non hai raccolto abbastanza informazioni per ipotizzare vulnerabilità o entry point.\n\n"
     "Alla fine produci un Final Answer riassuntivo con:\n"
+    "* i comandi eseguiti durante la fase\n"
     "* Servizi analizzati con versioni/tecnologie\n"
     "* Vulnerabilità sospette o ipotizzate\n"
     "* Suggerimento per la prossima fase"
@@ -88,8 +104,9 @@ RECON_AGENT_PROMPT = (
     "- Parti sempre con uno scan e poi vedi cosa ti viene ordinato da fare dopo.\n"
     "- Analizza l'output e aggiorna il tuo piano.\n"
     "- Continua a iterare finché non hai trovato abbastanza servizi e informazioni di riconoscimento.\n"
-    "- Fermati dopo massim 5 comandi.\n\n"
+    "- Fermati dopo massim 1 comandi.\n\n"
     "Alla fine, produci un Final Answer riassuntivo con:\n"
+    "* i comandi eseguiti durante la fase\n"
     "* Servizi trovati\n"
     "* Tecnologie\n"
     "* Suggerimento per la prossima fase\n"
@@ -154,3 +171,19 @@ WEB_SCANNER_AGENT_PROMPT=(
     "* Stato finale dell’accesso (es. root ottenuto)\n"
     "* Conferma della presenza di una flag se trovata."
 )
+
+prompts_agent = {
+    
+    "Reconnaissance": RECON_AGENT_PROMPT,
+    "Scanning": SCANNING_AGENT_PROMPT,
+    "Exploitation": EXPLOIT_AGENT_PROMPT,
+    "PrivilegeEscalation": PRIVESC_AGENT_PROMPT,
+    "WebScanner": WEB_SCANNER_AGENT_PROMPT
+}
+
+prompts_coordinators={
+    "Orchestrator": ORCHESTRATOR_PROMPT,
+    "MemoryCleaner": MEMORY_CLEANER_PROMPT,
+    "Reporter": REPORTER_AGENT_PROMPT,
+    "FinalReporter": FINAL_REPORTER_PROMPT,
+}

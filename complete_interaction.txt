@@ -1,0 +1,627 @@
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 2647, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/agents/Coordinators/memory_cleaner.py", line 42, in memory_cleaner
+    print('[MemoryCleaner] questi sono i nuovi messaggi'+json.dumps(cleaned_state["messages"], indent=2, ensure_ascii=False))
+                                                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type SystemMessage is not JSON serializable
+During task with name 'MemoryCleaner' and id '407dae67-825b-16d9-90f9-4263b37aaa57'
+(venv) ╭─alessiomaresca@MacBook-Pro-di-Alessio ~/Università/Progetto_Tesi_Magistrale/Maestro  ‹main*› 
+╰─➤  clear                                                                                                                                                              1 ↵
+
+(venv) ╭─alessiomaresca@MacBook-Pro-di-Alessio ~/Università/Progetto_Tesi_Magistrale/Maestro  ‹main*› 
+╰─➤  venv/bin/python -m main 
+[UnknownNode] IP: 10.10.11.69
+As is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!
+[Reporter] report aggiornato: {"target": "10.10.11.69", "phases": ["unknown"], "found_credentials": [{"service": "smb", "host": "10.10.11.69", "username": "j.fleischman", "password": "J0elTHEM4n1990!"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": [], "wrong_paths": [], "executed_commands": [], "next_phase_hint": "Enumerate SMB shares on 10.10.11.69 using credentials j.fleischman / J0elTHEM4n1990! (e.g., smbclient or smbmap)."}
+[UnknownNode] [Reporter] report aggiornato
+[UnknownNode] [Reporter] report aggiornato
+[UnknownNode] Reconnaissance
+^CTraceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/main.py", line 67, in <module>
+    for step in app.stream(inputs, stream_mode="values"):
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 2647, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/agents/ReAct/recon_agent.py", line 53, in recon_with_context
+    result = recon_core.invoke(enriched_inputs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 3026, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<10 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 2647, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 394, in invoke
+    ret = context.run(self.func, *args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/prebuilt/chat_agent_executor.py", line 627, in call_model
+    response = cast(AIMessage, static_model.invoke(model_input, config))  # type: ignore[union-attr]
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3049, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 5441, in invoke
+    return self.bound.invoke(
+           ~~~~~~~~~~~~~~~~~^
+        input,
+        ^^^^^^
+        self._merge_configs(config),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{**self.kwargs, **kwargs},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 383, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 1006, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 825, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 1072, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_openai/chat_models/base.py", line 1180, in _generate
+    response = self.client.create(**payload)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1147, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+KeyboardInterrupt
+
+(venv) ╭─alessiomaresca@MacBook-Pro-di-Alessio ~/Università/Progetto_Tesi_Magistrale/Maestro  ‹main*› 
+╰─➤  venv/bin/python -m main                                                                                                                                          130 ↵
+[UnknownNode] IP: 10.10.11.69
+As is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!
+[Reporter] report aggiornato: {"target": "10.10.11.69", "phases": ["unknown"], "found_credentials": [{"username": "j.fleischman", "password": "J0elTHEM4n1990!", "service": "smb"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": [], "wrong_paths": [], "executed_commands": [], "next_phase_hint": null}
+REPORTER
+********************
+{'messages': [HumanMessage(content='IP: 10.10.11.69\nAs is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!', additional_kwargs={}, response_metadata={}, name='User', id='7e49bb58-4ce8-419e-92a0-7ecab98bf064'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='08fd4bbe-1d9d-4696-9833-f5bfe25d8be9')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown"], "found_credentials": [{"username": "j.fleischman", "password": "J0elTHEM4n1990!", "service": "smb"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": [], "wrong_paths": [], "executed_commands": [], "next_phase_hint": null}'}
+********************
+REPORTER
+[UnknownNode] [Reporter] report aggiornato
+[UnknownNode] [Reporter] report aggiornato
+[UnknownNode] Reconnaissance
+
+[Human Intervention Requested]
+🤖 L'agente suggerisce / chiede: Preferisci che parta con una scansione veloce delle top 1000 porte (più rapida) oppure con una full port scan veloce su tutte le porte (più completa ma leggermente più lunga)?
+💡 Inserisci una risposta (può essere un consiglio, un comando alternativo o 'approvato'): 
+👉 La tua risposta: fai solo un ping veloce
+🔧 Executing: ping -c 1 -W 1 10.10.11.69
+ IL COMANDONE è :  ping -c 1 -W 1 10.10.11.69
+[UnknownNode] [Reconnaissance]
+Fase: Reconnaissance iniziale
+
+Comandi eseguiti:
+- ping -c 1 -W 1 10.10.11.69
+
+Risultato:
+- ICMP non raggiungibile (0 risposte). Possibile ICMP filtrato o host che non risponde al ping.
+
+Servizi trovati:
+- Nessuno (ancora)
+
+Tecnologie:
+- Non rilevate
+
+Suggerimento per la prossima fase:
+- Eseguire una scansione veloce delle porte più comuni ignorando il ping per verificare rapidamente la superficie esposta:
+  nmap -Pn -sS --top-ports 1000 -n -T4 10.10.11.69
+  (Poi, se emerge 445/139, approfondire con: nmap -Pn -sS -sV -p 445,139 10.10.11.69, sfruttando le credenziali SMB trovate.)
+[Reporter] report aggiornato: {"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"username": "j.fleischman", "password": "J0elTHEM4n1990!", "service": "smb"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["ICMP non raggiungibile (0 risposte). Possibile ICMP filtrato o host che non risponde al ping."], "wrong_paths": [], "executed_commands": ["ping -c 1 -W 1 10.10.11.69"], "next_phase_hint": "Eseguire una scansione veloce delle porte più comuni ignorando il ping: nmap -Pn -sS --top-ports 1000 -n -T4 10.10.11.69. Se emergono 445/139, approfondire con: nmap -Pn -sS -sV -p 445,139 10.10.11.69 e provare le credenziali SMB trovate."}
+REPORTER
+********************
+{'messages': [HumanMessage(content='IP: 10.10.11.69\nAs is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!', additional_kwargs={}, response_metadata={}, name='User', id='7e49bb58-4ce8-419e-92a0-7ecab98bf064'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='08fd4bbe-1d9d-4696-9833-f5bfe25d8be9'), HumanMessage(content='Reconnaissance', additional_kwargs={}, response_metadata={}, id='a58c55d4-42e1-4215-bfe4-0c06a2aa53ad'), AIMessage(content='[Reconnaissance]\nFase: Reconnaissance iniziale\n\nComandi eseguiti:\n- ping -c 1 -W 1 10.10.11.69\n\nRisultato:\n- ICMP non raggiungibile (0 risposte). Possibile ICMP filtrato o host che non risponde al ping.\n\nServizi trovati:\n- Nessuno (ancora)\n\nTecnologie:\n- Non rilevate\n\nSuggerimento per la prossima fase:\n- Eseguire una scansione veloce delle porte più comuni ignorando il ping per verificare rapidamente la superficie esposta:\n  nmap -Pn -sS --top-ports 1000 -n -T4 10.10.11.69\n  (Poi, se emerge 445/139, approfondire con: nmap -Pn -sS -sV -p 445,139 10.10.11.69, sfruttando le credenziali SMB trovate.)', additional_kwargs={}, response_metadata={}, name='Reconnaissance', id='c92df71d-46c9-4af2-9ea2-965eafa2336b'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='7e8f302c-cf7d-4b28-8a61-9465ff19fa20')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"username": "j.fleischman", "password": "J0elTHEM4n1990!", "service": "smb"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["ICMP non raggiungibile (0 risposte). Possibile ICMP filtrato o host che non risponde al ping."], "wrong_paths": [], "executed_commands": ["ping -c 1 -W 1 10.10.11.69"], "next_phase_hint": "Eseguire una scansione veloce delle porte più comuni ignorando il ping: nmap -Pn -sS --top-ports 1000 -n -T4 10.10.11.69. Se emergono 445/139, approfondire con: nmap -Pn -sS -sV -p 445,139 10.10.11.69 e provare le credenziali SMB trovate."}'}
+********************
+REPORTER
+[UnknownNode] [Reporter] report aggiornato
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/main.py", line 67, in <module>
+    for step in app.stream(inputs, stream_mode="values"):
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 2647, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/agents/Coordinators/memory_cleaner.py", line 31, in memory_cleaner
+    system = SystemMessage(
+             ^^^^^^^^^^^^^
+NameError: name 'SystemMessage' is not defined
+During task with name 'MemoryCleaner' and id 'eb096269-6d35-13b6-e76a-77c66bd435a9'
+(venv) ╭─alessiomaresca@MacBook-Pro-di-Alessio ~/Università/Progetto_Tesi_Magistrale/Maestro  ‹main*› 
+╰─➤  venv/bin/python -m main                                                                                                                                            1 ↵
+[UnknownNode] IP: 10.10.11.69
+As is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!
+[Reporter] report aggiornato: {"target": "10.10.11.69", "phases": ["unknown"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69"], "wrong_paths": [], "executed_commands": [], "next_phase_hint": null}
+REPORTER
+********************
+{'messages': [HumanMessage(content='IP: 10.10.11.69\nAs is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!', additional_kwargs={}, response_metadata={}, name='User', id='09dcb371-676d-4cc6-b886-1c4cb4d2bd3e'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='a7c3c250-3637-46cf-9518-69ffffe1e87f')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69"], "wrong_paths": [], "executed_commands": [], "next_phase_hint": null}'}
+********************
+REPORTER
+[UnknownNode] [Reporter] report aggiornato
+[UnknownNode] [Reporter] report aggiornato
+[UnknownNode] Reconnaissance
+
+[Human Intervention Requested]
+🤖 L'agente suggerisce / chiede: Confermi che posso partire con una scansione TCP completa e veloce delle porte sull’host 10.10.11.69 usando: nmap -p- --min-rate=5000 -n -T4 10.10.11.69? Se ci sono limiti di rumore/rete fammi sapere, altrimenti procedo.
+💡 Inserisci una risposta (può essere un consiglio, un comando alternativo o 'approvato'): 
+👉 La tua risposta: fai un ping veloce
+🔧 Executing: ping -c 3 -W 1 10.10.11.69
+ IL COMANDONE è :  ping -c 3 -W 1 10.10.11.69
+[UnknownNode] [Reconnaissance]
+Fase: Reconnaissance iniziale
+
+Comandi eseguiti:
+- ping -c 3 -W 1 10.10.11.69
+
+Risultati:
+- Host risponde in modo intermittente all’ICMP: 3 pacchetti inviati, 1 ricevuto (66.7% packet loss), RTT ~128 ms.
+- Il target è probabilmente up, ma l’ICMP potrebbe essere filtrato/throttled.
+
+Servizi trovati:
+- Nessuno ancora (solo reachability test ICMP).
+
+Tecnologie individuate:
+- Non ancora determinate.
+
+Suggerimento per la prossima fase:
+- Eseguire una scansione veloce delle porte TCP più comuni ignorando il ping:
+  - nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69
+- In base alle porte aperte, fare service/version detection mirata:
+  - nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69
+- Se SMB (445) è aperta, usare subito le credenziali fornite per enum non interattiva:
+  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3
+  - o enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69
+
+Vuoi che proceda con la scansione TCP veloce (--top-ports 1000) con -Pn?
+[Reporter] report aggiornato: {"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69", "ICMP reachability test: 3 sent, 1 received (~66.7% loss), RTT ~128 ms. Host likely up; ICMP may be filtered/throttled."], "wrong_paths": [], "executed_commands": ["ping -c 3 -W 1 10.10.11.69"], "next_phase_hint": "Eseguire una scansione veloce delle porte TCP ignorando il ping: nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69; in base alle porte aperte, fare service/version detection mirata: nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69; se SMB (445) è aperta, usare subito le credenziali per enum: smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3 oppure enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69"}
+REPORTER
+********************
+{'messages': [HumanMessage(content='IP: 10.10.11.69\nAs is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!', additional_kwargs={}, response_metadata={}, name='User', id='09dcb371-676d-4cc6-b886-1c4cb4d2bd3e'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='a7c3c250-3637-46cf-9518-69ffffe1e87f'), HumanMessage(content='Reconnaissance', additional_kwargs={}, response_metadata={}, id='da9e8ba1-61b4-4786-b0c3-14a9f31cffdf'), AIMessage(content="[Reconnaissance]\nFase: Reconnaissance iniziale\n\nComandi eseguiti:\n- ping -c 3 -W 1 10.10.11.69\n\nRisultati:\n- Host risponde in modo intermittente all’ICMP: 3 pacchetti inviati, 1 ricevuto (66.7% packet loss), RTT ~128 ms.\n- Il target è probabilmente up, ma l’ICMP potrebbe essere filtrato/throttled.\n\nServizi trovati:\n- Nessuno ancora (solo reachability test ICMP).\n\nTecnologie individuate:\n- Non ancora determinate.\n\nSuggerimento per la prossima fase:\n- Eseguire una scansione veloce delle porte TCP più comuni ignorando il ping:\n  - nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69\n- In base alle porte aperte, fare service/version detection mirata:\n  - nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69\n- Se SMB (445) è aperta, usare subito le credenziali fornite per enum non interattiva:\n  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3\n  - o enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69\n\nVuoi che proceda con la scansione TCP veloce (--top-ports 1000) con -Pn?", additional_kwargs={}, response_metadata={}, name='Reconnaissance', id='decdffa2-5f4f-4adf-8790-57ff8324b93e'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='87d15efd-650f-4853-a4db-eee94a9202ab')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69", "ICMP reachability test: 3 sent, 1 received (~66.7% loss), RTT ~128 ms. Host likely up; ICMP may be filtered/throttled."], "wrong_paths": [], "executed_commands": ["ping -c 3 -W 1 10.10.11.69"], "next_phase_hint": "Eseguire una scansione veloce delle porte TCP ignorando il ping: nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69; in base alle porte aperte, fare service/version detection mirata: nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69; se SMB (445) è aperta, usare subito le credenziali per enum: smbclient -L //10.10.11.69 -U \'j.fleischman%J0elTHEM4n1990!\' -m SMB3 oppure enum4linux-ng -A -u j.fleischman -p \'J0elTHEM4n1990!\' 10.10.11.69"}'}
+********************
+REPORTER
+[UnknownNode] [Reporter] report aggiornato
+MEMORY CLEANER
+********************
+{'messages': [AIMessage(content='[MemoryCleaner Summary]\n- Target: 10.10.11.69\n- Servizio: SMB\n- Credenziali: j.fleischman / J0elTHEM4n1990!\n- Comandi eseguiti: N/D\n- Vulnerabilità note: N/D', additional_kwargs={}, response_metadata={}, id='6655fcb8-5759-45f3-b03e-d7bfcf07255e'), HumanMessage(content='Reconnaissance', additional_kwargs={}, response_metadata={}, id='da9e8ba1-61b4-4786-b0c3-14a9f31cffdf'), AIMessage(content="[Reconnaissance]\nFase: Reconnaissance iniziale\n\nComandi eseguiti:\n- ping -c 3 -W 1 10.10.11.69\n\nRisultati:\n- Host risponde in modo intermittente all’ICMP: 3 pacchetti inviati, 1 ricevuto (66.7% packet loss), RTT ~128 ms.\n- Il target è probabilmente up, ma l’ICMP potrebbe essere filtrato/throttled.\n\nServizi trovati:\n- Nessuno ancora (solo reachability test ICMP).\n\nTecnologie individuate:\n- Non ancora determinate.\n\nSuggerimento per la prossima fase:\n- Eseguire una scansione veloce delle porte TCP più comuni ignorando il ping:\n  - nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69\n- In base alle porte aperte, fare service/version detection mirata:\n  - nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69\n- Se SMB (445) è aperta, usare subito le credenziali fornite per enum non interattiva:\n  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3\n  - o enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69\n\nVuoi che proceda con la scansione TCP veloce (--top-ports 1000) con -Pn?", additional_kwargs={}, response_metadata={}, name='Reconnaissance', id='decdffa2-5f4f-4adf-8790-57ff8324b93e'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='87d15efd-650f-4853-a4db-eee94a9202ab')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69", "ICMP reachability test: 3 sent, 1 received (~66.7% loss), RTT ~128 ms. Host likely up; ICMP may be filtered/throttled."], "wrong_paths": [], "executed_commands": ["ping -c 3 -W 1 10.10.11.69"], "next_phase_hint": "Eseguire una scansione veloce delle porte TCP ignorando il ping: nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69; in base alle porte aperte, fare service/version detection mirata: nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69; se SMB (445) è aperta, usare subito le credenziali per enum: smbclient -L //10.10.11.69 -U \'j.fleischman%J0elTHEM4n1990!\' -m SMB3 oppure enum4linux-ng -A -u j.fleischman -p \'J0elTHEM4n1990!\' 10.10.11.69"}'}
+********************
+MEMORY CLEANER
+[UnknownNode] [MemoryCleaner Summary]
+- Target: 10.10.11.69
+- Servizio: SMB
+- Credenziali: j.fleischman / J0elTHEM4n1990!
+- Comandi eseguiti: N/D
+- Vulnerabilità note: N/D
+[UnknownNode] Reconnaissance
+
+[Human Intervention Requested]
+🤖 L'agente suggerisce / chiede: Procedo con una scansione veloce TCP SYN ignorando il ping: nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69? Vuoi che aggiunga anche --min-rate=5000 per velocizzare ulteriormente, o teniamo il default T4 per evitare falsi negativi su reti “delicate”? Attendo indicazioni, intanto preparo il comando standard.
+💡 Inserisci una risposta (può essere un consiglio, un comando alternativo o 'approvato'): 
+👉 La tua risposta: sì,aggiungi --min-rate=5000 
+🔧 Executing: nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69
+ IL COMANDONE è :  nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69
+[UnknownNode] [Reconnaissance]
+Fase: Reconnaissance
+
+Comandi eseguiti
+- nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69
+  Esito: fallito (richiede privilegi root per SYN scan).
+
+Servizi trovati
+- Nessuno (la scansione non è partita).
+
+Tecnologie
+- Non determinato.
+
+Suggerimento per la prossima fase
+- Rieseguire la scansione iniziale usando una modalità non privilegiata:
+  nmap -sT -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69
+- In base alle porte aperte trovate, procedere con detection mirata:
+  nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69
+- Se 445/TCP è aperta, enumerare subito SMB con le credenziali fornite:
+  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3
+  - In alternativa: enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69
+[Reporter] report aggiornato: {"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69", "ICMP reachability test: 3 sent, 1 received (~66.7% loss), RTT ~128 ms. Host likely up; ICMP may be filtered/throttled.", "Nmap SYN scan (-sS) fallita per mancanza di privilegi root; nessun servizio rilevato."], "wrong_paths": [], "executed_commands": ["ping -c 3 -W 1 10.10.11.69", "nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69"], "next_phase_hint": "Rieseguire la scansione iniziale usando una modalità non privilegiata: nmap -sT -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69; in base alle porte aperte trovate, procedere con detection mirata: nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69; se 445/TCP è aperta, enumerare subito SMB con le credenziali fornite: smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3 oppure enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69"}
+REPORTER
+********************
+{'messages': [HumanMessage(content='IP: 10.10.11.69\nAs is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!', additional_kwargs={}, response_metadata={}, name='User', id='09dcb371-676d-4cc6-b886-1c4cb4d2bd3e'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='a7c3c250-3637-46cf-9518-69ffffe1e87f'), HumanMessage(content='Reconnaissance', additional_kwargs={}, response_metadata={}, id='da9e8ba1-61b4-4786-b0c3-14a9f31cffdf'), AIMessage(content="[Reconnaissance]\nFase: Reconnaissance iniziale\n\nComandi eseguiti:\n- ping -c 3 -W 1 10.10.11.69\n\nRisultati:\n- Host risponde in modo intermittente all’ICMP: 3 pacchetti inviati, 1 ricevuto (66.7% packet loss), RTT ~128 ms.\n- Il target è probabilmente up, ma l’ICMP potrebbe essere filtrato/throttled.\n\nServizi trovati:\n- Nessuno ancora (solo reachability test ICMP).\n\nTecnologie individuate:\n- Non ancora determinate.\n\nSuggerimento per la prossima fase:\n- Eseguire una scansione veloce delle porte TCP più comuni ignorando il ping:\n  - nmap -sS -Pn -n --top-ports 1000 -T4 10.10.11.69\n- In base alle porte aperte, fare service/version detection mirata:\n  - nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69\n- Se SMB (445) è aperta, usare subito le credenziali fornite per enum non interattiva:\n  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3\n  - o enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69\n\nVuoi che proceda con la scansione TCP veloce (--top-ports 1000) con -Pn?", additional_kwargs={}, response_metadata={}, name='Reconnaissance', id='decdffa2-5f4f-4adf-8790-57ff8324b93e'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='87d15efd-650f-4853-a4db-eee94a9202ab'), AIMessage(content='[MemoryCleaner Summary]\n- Target: 10.10.11.69\n- Servizio: SMB\n- Credenziali: j.fleischman / J0elTHEM4n1990!\n- Comandi eseguiti: N/D\n- Vulnerabilità note: N/D', additional_kwargs={}, response_metadata={}, id='6655fcb8-5759-45f3-b03e-d7bfcf07255e'), HumanMessage(content='Reconnaissance', additional_kwargs={}, response_metadata={}, id='1ee23343-afab-4b7b-b613-ded8de5ed604'), AIMessage(content="[Reconnaissance]\nFase: Reconnaissance\n\nComandi eseguiti\n- nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69\n  Esito: fallito (richiede privilegi root per SYN scan).\n\nServizi trovati\n- Nessuno (la scansione non è partita).\n\nTecnologie\n- Non determinato.\n\nSuggerimento per la prossima fase\n- Rieseguire la scansione iniziale usando una modalità non privilegiata:\n  nmap -sT -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69\n- In base alle porte aperte trovate, procedere con detection mirata:\n  nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69\n- Se 445/TCP è aperta, enumerare subito SMB con le credenziali fornite:\n  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3\n  - In alternativa: enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69", additional_kwargs={}, response_metadata={}, name='Reconnaissance', id='e903aa1c-271f-4efa-b78b-9294677eee28'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='e2284ebb-3f87-453c-b8fc-dff50bb998eb')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69", "ICMP reachability test: 3 sent, 1 received (~66.7% loss), RTT ~128 ms. Host likely up; ICMP may be filtered/throttled.", "Nmap SYN scan (-sS) fallita per mancanza di privilegi root; nessun servizio rilevato."], "wrong_paths": [], "executed_commands": ["ping -c 3 -W 1 10.10.11.69", "nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69"], "next_phase_hint": "Rieseguire la scansione iniziale usando una modalità non privilegiata: nmap -sT -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69; in base alle porte aperte trovate, procedere con detection mirata: nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69; se 445/TCP è aperta, enumerare subito SMB con le credenziali fornite: smbclient -L //10.10.11.69 -U \'j.fleischman%J0elTHEM4n1990!\' -m SMB3 oppure enum4linux-ng -A -u j.fleischman -p \'J0elTHEM4n1990!\' 10.10.11.69"}'}
+********************
+REPORTER
+[UnknownNode] [Reporter] report aggiornato
+MEMORY CLEANER
+********************
+{'messages': [AIMessage(content='[MemoryCleaner Summary]\n- Target: 10.10.11.69\n- Credenziali note (SMB): j.fleischman / J0elTHEM4n1990!\n- Comandi eseguiti:\n  - ping -c 3 -W 1 10.10.11.69 → 1/3 risposte (66.7% loss), RTT ~128 ms (ICMP probabilmente filtrato/throttled)\n- Servizi individuati: nessuno ancora confermato\n- Vulnerabilità note: N/D', additional_kwargs={}, response_metadata={}, id='bcf8eb85-fb69-44bd-8a74-e0f8ce12a5ed'), HumanMessage(content='Reconnaissance', additional_kwargs={}, response_metadata={}, id='1ee23343-afab-4b7b-b613-ded8de5ed604'), AIMessage(content="[Reconnaissance]\nFase: Reconnaissance\n\nComandi eseguiti\n- nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69\n  Esito: fallito (richiede privilegi root per SYN scan).\n\nServizi trovati\n- Nessuno (la scansione non è partita).\n\nTecnologie\n- Non determinato.\n\nSuggerimento per la prossima fase\n- Rieseguire la scansione iniziale usando una modalità non privilegiata:\n  nmap -sT -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69\n- In base alle porte aperte trovate, procedere con detection mirata:\n  nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69\n- Se 445/TCP è aperta, enumerare subito SMB con le credenziali fornite:\n  - smbclient -L //10.10.11.69 -U 'j.fleischman%J0elTHEM4n1990!' -m SMB3\n  - In alternativa: enum4linux-ng -A -u j.fleischman -p 'J0elTHEM4n1990!' 10.10.11.69", additional_kwargs={}, response_metadata={}, name='Reconnaissance', id='e903aa1c-271f-4efa-b78b-9294677eee28'), AIMessage(content='[Reporter] report aggiornato', additional_kwargs={}, response_metadata={}, name='Reporter', id='e2284ebb-3f87-453c-b8fc-dff50bb998eb')], 'shared_report': '{"target": "10.10.11.69", "phases": ["unknown", "Reconnaissance"], "found_credentials": [{"service": "smb", "username": "j.fleischman", "password": "J0elTHEM4n1990!", "host": "10.10.11.69"}], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": ["Provided initial SMB credentials: j.fleischman / J0elTHEM4n1990! for host 10.10.11.69", "ICMP reachability test: 3 sent, 1 received (~66.7% loss), RTT ~128 ms. Host likely up; ICMP may be filtered/throttled.", "Nmap SYN scan (-sS) fallita per mancanza di privilegi root; nessun servizio rilevato."], "wrong_paths": [], "executed_commands": ["ping -c 3 -W 1 10.10.11.69", "nmap -sS -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69"], "next_phase_hint": "Rieseguire la scansione iniziale usando una modalità non privilegiata: nmap -sT -Pn -n --top-ports 1000 -T4 --min-rate=5000 10.10.11.69; in base alle porte aperte trovate, procedere con detection mirata: nmap -sV -sC -Pn -n -p <porte_trovate> 10.10.11.69; se 445/TCP è aperta, enumerare subito SMB con le credenziali fornite: smbclient -L //10.10.11.69 -U \'j.fleischman%J0elTHEM4n1990!\' -m SMB3 oppure enum4linux-ng -A -u j.fleischman -p \'J0elTHEM4n1990!\' 10.10.11.69"}'}
+********************
+MEMORY CLEANER
+[UnknownNode] [MemoryCleaner Summary]
+- Target: 10.10.11.69
+- Credenziali note (SMB): j.fleischman / J0elTHEM4n1990!
+- Comandi eseguiti:
+  - ping -c 3 -W 1 10.10.11.69 → 1/3 risposte (66.7% loss), RTT ~128 ms (ICMP probabilmente filtrato/throttled)
+- Servizi individuati: nessuno ancora confermato
+- Vulnerabilità note: N/D
+[UnknownNode] Scanning
+^CTraceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/main.py", line 67, in <module>
+    for step in app.stream(inputs, stream_mode="values"):
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 2647, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/agents/ReAct/scanning_agent.py", line 35, in scanning_with_context
+    result = scanning_core.invoke(enriched_inputs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 3026, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<10 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/main.py", line 2647, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/_internal/_runnable.py", line 394, in invoke
+    ret = context.run(self.func, *args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langgraph/prebuilt/chat_agent_executor.py", line 627, in call_model
+    response = cast(AIMessage, static_model.invoke(model_input, config))  # type: ignore[union-attr]
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 3049, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/runnables/base.py", line 5441, in invoke
+    return self.bound.invoke(
+           ~~~~~~~~~~~~~~~~~^
+        input,
+        ^^^^^^
+        self._merge_configs(config),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{**self.kwargs, **kwargs},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 383, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 1006, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 825, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_core/language_models/chat_models.py", line 1072, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/langchain_openai/chat_models/base.py", line 1180, in _generate
+    response = self.client.create(**payload)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1147, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/openai/_base_client.py", line 982, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "/Users/alessiomaresca/Università/Progetto_Tesi_Magistrale/Maestro/venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1285, in recv
+    return self.read(buflen)
+           ~~~~~~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1140, in read
+    return self._sslobj.read(len)
+           ~~~~~~~~~~~~~~~~~^^^^^
+KeyboardInterrupt
+
+(venv) ╭─alessiomaresca@MacBook-Pro-di-Alessio ~/Università/Progetto_Tesi_Magistrale/Maestro  ‹main*› 
+╰─➤                                                                                                                                                                   130 ↵
