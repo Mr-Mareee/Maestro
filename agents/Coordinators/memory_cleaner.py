@@ -2,7 +2,7 @@
 from typing import List
 from models import get_model
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage
-from .state import AgentState
+from ..state import AgentState
 from prompts import MEMORY_CLEANER_PROMPT
 import json
 

@@ -1,21 +1,27 @@
 from langgraph.prebuilt import create_react_agent
 from tools.tools import tools
-from .state import AgentState
-from prompts import WEB_SCANNER_AGENT_PROMPT
+from ..state import AgentState
+from prompts import RECON_AGENT_PROMPT
 from models import get_model
 from langchain_core.messages import AIMessage
-def flatten_messages(msgs):
-            flat = []
-            for m in msgs:
-                if isinstance(m, list):
-                    flat.extend(flatten_messages(m))
-                else:
-                    flat.append(m)
-            return flat
+def extract_summary(messages) -> str:
+    """Estrae contenuto testuale dai messaggi, appiattendo liste e forzando in stringa."""
+    parts = []
+    def _flatten(msgs):
+        for m in msgs:
+            if isinstance(m, list):
+                _flatten(m)
+            elif hasattr(m, "content"):
+                parts.append(str(m.content))
+            else:
+                parts.append(str(m))
+    _flatten(messages)
+    return "\n".join(parts)
 
-def build_web_scanner_agent():
+
+def build_recon_agent():
     """
-    Web Scanner Agent come ReAct.
+    Recon Agent come ReAct.
     - Usa i tool (terminal_tool, self_rag_tool, ecc.)
     - Riceve dallo state il `shared_report` (solo per contesto)
     - NON aggiorna lo shared_report (compito del Reporter)
@@ -23,13 +29,13 @@ def build_web_scanner_agent():
     model = get_model(temperature=0)
 
     # Core ReAct agent (lavora su messages)
-    web_scanner_core = create_react_agent(
+    recon_core = create_react_agent(
         model,
         tools=tools,
-        prompt=WEB_SCANNER_AGENT_PROMPT,
+        prompt=RECON_AGENT_PROMPT,
     )
 
-    def web_scanner_with_context(state: AgentState) -> AgentState:
+    def recon_with_context(state: AgentState) -> AgentState:
         shared_report = state.get("shared_report", "Nessuna informazione precedente.")
         last_msg = state["messages"][-1]
 
@@ -43,17 +49,16 @@ def build_web_scanner_agent():
         enriched_inputs["messages"].extend(state["messages"])
 
         # Invoco il core ReAct agent
-        result = web_scanner_core.invoke(enriched_inputs)
+        result = recon_core.invoke(enriched_inputs)
+        
 
+        summary = extract_summary(result["messages"])
 
-        flat_messages = flatten_messages(result["messages"])
-        summary = "\n".join(m.content for m in flat_messages if hasattr(m, "content"))
-
-        web_scanner_msg = AIMessage(content=f"[WebScanner]\n{summary}", name="WebScanner")
+        recon_msg = AIMessage(content=f"[Reconnaissance]\n{summary}", name="Reconnaissance")
         # Ritorno solo i messaggi generati, senza toccare lo shared_report
         return {
-            "messages": web_scanner_msg,
+            "messages": recon_msg,
             "shared_report": shared_report
         }
 
-    return web_scanner_with_context
+    return recon_with_context

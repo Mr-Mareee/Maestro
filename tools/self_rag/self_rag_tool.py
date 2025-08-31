@@ -352,13 +352,13 @@ if __name__ == "__main__":
     rag = SelfRAG()
 
     # 1) Costruisci KB per ogni sottocartella di ./kb (nome cartella = kb_name = ruolo)
-    kb_root = "./kb"
+    """kb_root = "./kb"
     if os.path.isdir(kb_root):
         created = rag.build_all_from_root(kb_root)
         print(f"[SelfRAG] KB create: {created}")
     else:
         print("[SelfRAG] Nessuna cartella ./kb trovata. Creala per usare il retrieval per-ruolo.")
-
+    """
     # 2) Parametri di test (come se fosse un agente che invoca)
     PROMPT = "Voglio enumerare rapidamente i servizi; quali comandi usare su questo target?"
     ROLE   = "Reconnaissance"  # oppure "Scanning", "Exploitation", "PrivilegeEscalation"

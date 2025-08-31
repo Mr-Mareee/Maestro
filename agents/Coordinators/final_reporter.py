@@ -2,7 +2,7 @@
 import json
 from models import get_model
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from .state import AgentState
+from ..state import AgentState
 from prompts import FINAL_REPORTER_PROMPT
 
 def final_reporter(state: AgentState) -> AgentState:

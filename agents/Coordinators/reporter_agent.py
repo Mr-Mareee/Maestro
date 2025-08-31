@@ -6,7 +6,7 @@ from langchain_core.messages import SystemMessage, HumanMessage,BaseMessage, AIM
 from langgraph.graph.message import add_messages
 
 from prompts import REPORTER_AGENT_PROMPT
-from .state import AgentState
+from ..state import AgentState
 
 # ---- schema base del report condiviso ----
 def _default_report():

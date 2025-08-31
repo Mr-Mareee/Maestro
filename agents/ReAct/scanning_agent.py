@@ -1,26 +1,27 @@
+# agents/scanning_agent.py
 from models import get_model
 from langgraph.prebuilt import create_react_agent
 from tools.tools import tools
-from .state import AgentState
-from prompts import PRIVESC_AGENT_PROMPT
+from ..state import AgentState
+from prompts import SCANNING_AGENT_PROMPT
 from langchain_core.messages import AIMessage
 
-def build_privesc_agent():
+def build_scanning_agent():
     """
-    Privilege Escalation Agent come ReAct.
-    - Usa i tool (terminal_tool, self_rag_tool, ecc.)
-    - Riceve dallo state il `shared_report` (solo per contesto)
+    Scanning Agent come ReAct.
+    - Analizza servizi già scoperti
+    - Usa tool (es. nmap -sV, searchsploit, ecc.)
     - NON aggiorna lo shared_report (compito del Reporter)
     """
     model = get_model(temperature=0)
 
-    privesc_core = create_react_agent(
+    scanning_core = create_react_agent(
         model,
         tools=tools,
-        prompt=PRIVESC_AGENT_PROMPT,
+        prompt=SCANNING_AGENT_PROMPT,
     )
 
-    def privesc_with_context(state: AgentState) -> AgentState:
+    def scanning_with_context(state: AgentState) -> AgentState:
         shared_report = state.get("shared_report", "Nessuna informazione precedente.")
         last_msg = state["messages"][-1]
 
@@ -31,13 +32,13 @@ def build_privesc_agent():
             ]
         }
         enriched_inputs["messages"].extend(state["messages"])
-        result = privesc_core.invoke(enriched_inputs)
+        result = scanning_core.invoke(enriched_inputs)
         summary = "\n".join(m.content for m in result["messages"] if hasattr(m, "content"))
-        privesc_msg = AIMessage(content=f"[Privilege Escalation]\n{summary}", name="PrivilegeEscalation")
+        scanning_msg = AIMessage(content=f"[Scanning]\n{summary}", name="Scanning")
 
         return {
-            "messages": privesc_msg,
+            "messages": scanning_msg,
             "shared_report": shared_report
         }
 
-    return privesc_with_context
+    return scanning_with_context

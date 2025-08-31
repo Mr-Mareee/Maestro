@@ -4,7 +4,7 @@ from prompts import ORCHESTRATOR_PROMPT
 from typing import Annotated, Sequence, TypedDict
 from langchain_core.messages import BaseMessage
 from langgraph.graph.message import add_messages
-from .state import AgentState
+from ..state import AgentState
 
 # Orchestrator: unico non ReAct agent
 def orchestrator(state: AgentState) -> AgentState:
