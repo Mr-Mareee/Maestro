@@ -813,5 +813,4 @@ MEMORY CLEANER
   - Considerare una scansione delle versioni per ulteriori dettagli.
 - **Fallimenti:** Nessuna flag trovata e nessun accesso root ottenuto.
 [UnknownNode] FinalReporter
-[UnknownNode] [FinalReporter] Report finale generato
-                                                                         
+[UnknownNode] [FinalReporter] Report finale generato         
