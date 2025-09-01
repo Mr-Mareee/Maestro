@@ -19,7 +19,7 @@ from agents.ReAct.ReAct_agent import build_react_agent
 
 load_dotenv()
 
-agents = ['Reconnaissance', 'Exploitation', 'PrivilegeEscalation', 'WebScanner']
+agents = ['Reconnaissance', 'PrivilegeEscalation', 'WebScanner']
 
 graph = StateGraph(AgentState)
 
@@ -42,7 +42,7 @@ graph.add_conditional_edges(
     {
         "to_recon": "Reconnaissance",
         #"to_scan": "Scanning",
-        "to_exploit": "Exploitation",
+        #"to_exploit": "Exploitation",
         "to_priv": "PrivilegeEscalation",
         "to_web_scan": "WebScanner",
         "to_final_report": "FinalReporter",

@@ -33,7 +33,7 @@ def build_react_agent(name):
 
     recon_core = create_react_agent(
         model,
-        tools=tools,
+        tools=tools[name],
         prompt=prompts_agent[name],
     )
 

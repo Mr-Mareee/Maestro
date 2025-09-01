@@ -86,11 +86,5 @@ def reporter_agent(state: AgentState) -> AgentState:
     
     cleaned_state = dict(state)
     cleaned_state["shared_report"] = json.dumps(updated, ensure_ascii=False)
-    print(f"[Reporter] report aggiornato: {json.dumps(updated, ensure_ascii=False)}")
-    print('REPORTER')
-    print('*'*20)
-    print(cleaned_state)
-    print('*'*20)
-    print('REPORTER')
 
     return cleaned_state

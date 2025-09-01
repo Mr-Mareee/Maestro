@@ -18,6 +18,9 @@ def connected_kali(command, username, password, hostname, port=22) -> str:
     print('*'*20)
     print(f"\n[Esecuzione comando: {command} con  SSH su {hostname}:{port} come {username}]")
     print('*'*20)
+    ans = input("Procedo? (y/n): ")
+    if ans.lower() != 'y':
+           return "Comando SSH annullato dall'utente."
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
 
     ssh_client.connect(hostname=hostname, port=port, username=username, password=password)
@@ -28,11 +31,14 @@ def connected_kali(command, username, password, hostname, port=22) -> str:
          output=stdout.read().decode()
 
          error=stderr.read().decode()
-
+         answer = ""
          if output:
-              return output
+              answer = output
          if error:
-              return error
+              answer = error
+         if answer:
+                 print(f"[Output del comando SSH]:\n{answer}\n")
+                 return answer
          return BaseMessage(content="Nessun output restituito.")
     finally:
          ssh_client.close()

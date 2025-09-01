@@ -307,15 +307,17 @@ class SelfRAG:
 
         # 6) Utility grading
         utility = self.utility_grader(query, json.dumps(refined, ensure_ascii=False))
-
-        return {
+        output ={
             "commands": refined.get("commands", []),
             "supported": supported,
             "utility": utility,
             "notes": refined.get("notes", "")
         }
-
-    # ------------------------ LangChain Tool ------------------------
+        print('*** SELF-RAG DEBUG ***')
+        print(output)
+        print('************************')
+        return output
+            # ------------------------ LangChain Tool ------------------------
 
     def get_tool(self) -> StructuredTool:
         """
@@ -352,7 +354,7 @@ if __name__ == "__main__":
     rag = SelfRAG()
 
     # 1) Costruisci KB per ogni sottocartella di ./kb (nome cartella = kb_name = ruolo)
-    """kb_root = "./kb"
+    """    kb_root = "./kb"
     if os.path.isdir(kb_root):
         created = rag.build_all_from_root(kb_root)
         print(f"[SelfRAG] KB create: {created}")
@@ -360,8 +362,8 @@ if __name__ == "__main__":
         print("[SelfRAG] Nessuna cartella ./kb trovata. Creala per usare il retrieval per-ruolo.")
     """
     # 2) Parametri di test (come se fosse un agente che invoca)
-    PROMPT = "Voglio enumerare rapidamente i servizi; quali comandi usare su questo target?"
-    ROLE   = "Reconnaissance"  # oppure "Scanning", "Exploitation", "PrivilegeEscalation"
+    PROMPT = "ho un sito http che usa php, come procederesti?"
+    ROLE   = "WebScanner"  # oppure "Scanning", "Exploitation", "PrivilegeEscalation"
     REPORT = '{"target":"127.0.0.1","services":[{"port":80,"service":"http"}],"os":"windows"}'
 
     # 3) Esegui Self-RAG
