@@ -14,3 +14,4 @@ networkx
 rich
 faiss-cpu
 langchain-experimental
+paramiko

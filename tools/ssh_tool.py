@@ -1,0 +1,45 @@
+import paramiko  # type: ignore
+from langchain.tools import StructuredTool
+from pydantic import BaseModel, Field
+from langchain_core.messages import BaseMessage
+
+
+class SSH_CommandInput(BaseModel):
+    """Input schema for SSH command execution."""
+    command: str = Field(description="Complete shell command to execute on the remote Kali Linux machine")
+    username: str = Field(description="SSH username for the remote Kali Linux machine")
+    password: str = Field(description="SSH password for the remote Kali Linux machine")
+    hostname: str = Field(description="Hostname or IP address of the remote Kali Linux machine")
+    port: int = Field(default=22, description="SSH port of the remote Kali Linux machine, default is 22")
+
+
+def connected_kali(command, username, password, hostname, port=22) -> str:
+    ssh_client=paramiko.SSHClient()
+    print('*'*20)
+    print(f"\n[Esecuzione comando: {command} con  SSH su {hostname}:{port} come {username}]")
+    print('*'*20)
+    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
+
+    ssh_client.connect(hostname=hostname, port=port, username=username, password=password)
+
+    try:
+         stdin, stdout, stderr=ssh_client.exec_command(command)
+
+         output=stdout.read().decode()
+
+         error=stderr.read().decode()
+
+         if output:
+              return output
+         if error:
+              return error
+         return BaseMessage(content="Nessun output restituito.")
+    finally:
+         ssh_client.close()
+
+ssh_tool = StructuredTool.from_function(
+    func=connected_kali,
+    name="ssh_tool",
+    description = """Esegue comandi NON INTERATTIVI di ssh sul sistema target.""",
+    args_schema=SSH_CommandInput
+)

@@ -30,13 +30,12 @@ def orchestrator(state: AgentState) -> AgentState:
     decision = response.content.strip()
     if decision not in [
         "Reconnaissance",
-        "Scanning",
         "Exploitation",
         "PrivilegeEscalation",
         "WebScanner",
         "FinalReporter"
     ]:
-        decision = "Reconnaissance"  # fallback conservativo
+        raise ValueError(f"Decisione non valida dall'Orchestrator: {decision}")
     return {"messages": [decision]}
 
 

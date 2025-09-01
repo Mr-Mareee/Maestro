@@ -7,10 +7,10 @@ from langgraph.graph.message import add_messages
 
 from prompts import REPORTER_AGENT_PROMPT
 from ..state import AgentState
-
 # ---- schema base del report condiviso ----
 def _default_report():
     return {
+        "start_time": '',
         "target": '',
         "phases": [],     # es: ["Reconnaissance", "Scanning"]
         "found_credentials":[],                    
@@ -49,7 +49,6 @@ def reporter_agent(state: AgentState) -> AgentState:
     - restituisce lo shared_report aggiornato nello state
     """
     model = get_model(temperature=0)
-
     prev_report = _safe_load_report(state.get("shared_report", ""))
     last_msg = state["messages"][-1]
     agent_output = last_msg.content if hasattr(last_msg, "content") else str(last_msg)

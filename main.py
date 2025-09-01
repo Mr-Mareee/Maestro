@@ -2,21 +2,24 @@ from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, END
-from agents.ReAct.recon_agent import build_recon_agent
+from agents.ReAct.old_files.recon_agent import build_recon_agent
 from agents.Coordinators.orchestrator import orchestrator, route_from_orchestrator
 from agents.Coordinators.reporter_agent import reporter_agent
 from agents.Coordinators.final_reporter import final_reporter
-from agents.ReAct.scanning_agent import build_scanning_agent
-from agents.ReAct.exploitation_agent import build_exploit_agent
-from agents.ReAct.privesc_agent import build_privesc_agent
+from agents.ReAct.old_files.scanning_agent import build_scanning_agent
+from agents.ReAct.old_files.exploitation_agent import build_exploit_agent
+from agents.ReAct.old_files.privesc_agent import build_privesc_agent
 from agents.state import AgentState
 from agents.Coordinators.memory_cleaner import memory_cleaner
-from agents.ReAct.web_scanner_agent import build_web_scanner_agent
+from agents.ReAct.old_files.web_scanner_agent import build_web_scanner_agent
+import time
 
 from agents.ReAct.ReAct_agent import build_react_agent
 
 
 load_dotenv()
+
+agents = ['Reconnaissance', 'Exploitation', 'PrivilegeEscalation', 'WebScanner']
 
 graph = StateGraph(AgentState)
 
@@ -25,34 +28,29 @@ graph.add_node("Reporter", reporter_agent)
 graph.add_node("FinalReporter", final_reporter)
 graph.add_node("MemoryCleaner", memory_cleaner)
 
-
-graph.add_node("Reconnaissance", build_react_agent("Reconnaissance")) 
-graph.add_node("Scanning", build_react_agent("Scanning"))
-graph.add_node("Exploitation", build_react_agent("Exploitation"))
-graph.add_node("PrivilegeEscalation", build_react_agent("PrivilegeEscalation"))
-graph.add_node("WebScanner", build_react_agent("WebScanner"))
-
-
 graph.set_entry_point("Reporter")
+
+for agent in agents:
+    graph.add_node(agent, build_react_agent(agent)) 
+
+
+
 
 graph.add_conditional_edges(
     "Orchestrator",
     route_from_orchestrator,
     {
         "to_recon": "Reconnaissance",
-        "to_scan": "Scanning",
+        #"to_scan": "Scanning",
         "to_exploit": "Exploitation",
         "to_priv": "PrivilegeEscalation",
         "to_web_scan": "WebScanner",
         "to_final_report": "FinalReporter",
     },
 )
+for agent in agents:
+    graph.add_edge(agent, "Reporter")
 
-graph.add_edge("Reconnaissance", "Reporter")
-graph.add_edge("Scanning", "Reporter")
-graph.add_edge("Exploitation", "Reporter")
-graph.add_edge("PrivilegeEscalation", "Reporter")
-graph.add_edge("WebScanner", "Reporter")
 
 graph.add_edge("Reporter", "MemoryCleaner")
 graph.add_edge("MemoryCleaner","Orchestrator")
@@ -64,9 +62,10 @@ app = graph.compile()
 
 #se devo testare in locale
 #ip='127.0.0.1'
-ip = "10.10.11.69"
-extra_infos = "As is common in real life Windows pentests, you will start the Fluffy box with credentials for the following smb account: j.fleischman / J0elTHEM4n1990!"
-prompt_iniziale = f"IP: {ip}\n{extra_infos}"
+
+ip = "192.168.1.18"
+extra_infos = ""
+prompt_iniziale = f"IP: {ip}\n{extra_infos}. ora inizio: {time.ctime()}"
 
 # --- Test veloce ---
 if __name__ == "__main__":

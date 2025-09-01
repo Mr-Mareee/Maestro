@@ -31,7 +31,6 @@ def build_react_agent(name):
     """
     model = get_model(temperature=0)  # o get_model()
 
-    # Core ReAct agent (lavora su messages)
     recon_core = create_react_agent(
         model,
         tools=tools,

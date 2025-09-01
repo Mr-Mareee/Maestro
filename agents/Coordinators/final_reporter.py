@@ -4,7 +4,7 @@ from models import get_model
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from ..state import AgentState
 from prompts import FINAL_REPORTER_PROMPT
-
+import time
 def final_reporter(state: AgentState) -> AgentState:
     """
     Nodo finale del grafo:
@@ -23,7 +23,7 @@ def final_reporter(state: AgentState) -> AgentState:
 
     # Prompt rigido
     system = SystemMessage(content=FINAL_REPORTER_PROMPT)
-
+    report_data["end_time"] = time.ctime()
     human = HumanMessage(content=f"Report JSON:\n{json.dumps(report_data, indent=2, ensure_ascii=False)}")
 
     response = model.invoke([system, human])
