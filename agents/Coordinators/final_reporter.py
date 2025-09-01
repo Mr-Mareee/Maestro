@@ -24,7 +24,7 @@ def final_reporter(state: AgentState) -> AgentState:
     # Prompt rigido
     system = SystemMessage(content=FINAL_REPORTER_PROMPT)
     report_data["end_time"] = time.ctime()
-    human = HumanMessage(content=f"Report JSON:\n{json.dumps(report_data, indent=2, ensure_ascii=False)}")
+    human = HumanMessage(content=f"Report JSON:\n{json.dumps(report_data, indent=2, ensure_ascii=False)},interazione completa={state.get('messages')}")
 
     response = model.invoke([system, human])
     final_text = response.content.strip()

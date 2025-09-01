@@ -11,6 +11,7 @@ PROMPT_GENERATE_COMMANDS=(
             "su nmap velocizza la ricerca, aggiungi --min-rate=5000"
             "- Rationale deve essere supportato da evidenze.\n"
             "- Se non hai evidenze sufficienti, proponi prima un comando di enumerazione.\n"
+            "- i comandi devono essere inerenti all'agente che li richiede. non proporre nmap a webscanner e non proporre curl a reconnaissance. privilege escalation si occupa principalmente di controllo file e directory per poi leggere la flag.txt\n"
         )
 
 PROMPT_UTILITY_GRADER="Dai un voto 1..5 all'utilità dell'OUTPUT rispetto alla QUERY. Rispondi solo con un numero."

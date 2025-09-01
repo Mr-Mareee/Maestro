@@ -1,29 +1,15 @@
 **Resoconto Finale del Penetration Test**
 
 **Riepilogo delle Fasi Eseguite:**
-Il penetration test è stato condotto attraverso diverse fasi chiave, a partire da una fase iniziale di ricognizione per identificare i servizi attivi e le porte aperte sul sistema target. Successivamente, sono state eseguite scansioni dettagliate per determinare le versioni dei servizi e le tecnologie in uso. La fase di sfruttamento ha permesso di ottenere accesso al sistema, seguita da un'escalation dei privilegi che ha portato all'accesso con privilegi di root.
+Il penetration test è stato condotto sul target 127.0.0.1 e ha seguito diverse fasi chiave. Inizialmente, è stata eseguita una fase di "Reconnaissance" per raccogliere informazioni preliminari sul sistema. Successivamente, è stato utilizzato un "WebScanner" per analizzare i servizi web disponibili. Infine, è stata tentata una fase di "Privilege Escalation" per verificare la possibilità di ottenere privilegi elevati sul sistema.
 
 **Servizi e Tecnologie Rilevati:**
-Durante il test, sono stati identificati diversi servizi attivi sul sistema Windows target, tra cui:
-- **Domain (Porta 53, TCP)**
-- **Kerberos-sec (Porta 88, TCP)**: Microsoft Windows Kerberos
-- **Netbios-ssn (Porta 139, TCP)**: Microsoft Windows netbios-ssn
-- **LDAP (Porta 389, TCP)**: Microsoft Windows Active Directory LDAP
-- **Microsoft-ds (Porta 445, TCP)**: Potenzialmente Microsoft Windows SMB
-- **Kpasswd5 (Porta 464, TCP)**
-- **HTTP-RPC-epmap (Porta 593, TCP)**: Microsoft Windows RPC over HTTP 1.0
-- **LDAPSSL (Porta 636, TCP)**: Microsoft Windows Active Directory LDAP
-- **GlobalcatLDAP (Porta 3268, TCP)**: Microsoft Windows Active Directory LDAP
-- **GlobalcatLDAPSSL (Porta 3269, TCP)**: Microsoft Windows Active Directory LDAP
-- **WSMAN (Porta 5985, TCP)**: Microsoft HTTPAPI httpd 2.0
-- **ADWS (Porta 9389, TCP)**: .NET Message Framing
-- Diverse porte con servizi sconosciuti (49667, 49687, 49688, 49691, 49707, 49715, 49758)
+Durante il test, sono stati identificati due servizi principali in esecuzione sul sistema:
+- **SSH**: in ascolto sulla porta 22.
+- **HTTP**: in ascolto sulla porta 80.
 
 **Possibili Vulnerabilità:**
-Sono state ipotizzate diverse vulnerabilità potenziali:
-- **Kerberos e LDAP**: Potrebbero essere suscettibili a tecniche di attacco come Pass-the-Hash o Kerberoasting.
-- **SMB (Porta 445)**: Potenzialmente vulnerabile a exploit noti come EternalBlue, se non aggiornato.
-- **HTTP-RPC e ADWS**: Potrebbero essere soggetti a vulnerabilità specifiche di Windows RPC e .NET.
+Non sono state identificate vulnerabilità specifiche durante il test. Tuttavia, sono stati trovati credenziali di accesso al database con username e password identici ("gianni"), il che rappresenta una potenziale debolezza in termini di sicurezza. Non sono stati rilevati accessi a shell utente né privilegi elevati, e non sono state trovate directory o alert significativi durante la scansione web.
 
 **Considerazioni e Raccomandazioni Conclusive:**
-Il penetration test ha rivelato che il sistema target presenta diverse potenziali vulnerabilità che potrebbero essere sfruttate da un attaccante. L'accesso con privilegi di root è stato ottenuto, indicando che le misure di sicurezza attuali potrebbero non essere sufficienti per proteggere il sistema da attacchi avanzati. È essenziale esaminare e aggiornare i servizi critici come SMB e Kerberos per mitigare i rischi associati a exploit noti. Inoltre, è consigliabile eseguire una revisione completa delle configurazioni di sicurezza e delle politiche di accesso per garantire che le credenziali non siano facilmente compromettibili.
+Il test ha evidenziato la presenza di credenziali deboli per l'accesso al database, che potrebbero essere sfruttate da un attaccante per ottenere accesso non autorizzato. È essenziale migliorare la gestione delle password, assicurandosi che siano complesse e uniche. Inoltre, sebbene non siano state rilevate vulnerabilità specifiche nei servizi SSH e HTTP, si consiglia di eseguire ulteriori analisi per identificare eventuali configurazioni errate o vulnerabilità non ancora scoperte. Infine, è stato trovato un flag indicativo di un possibile successo parziale nel test, suggerendo che ulteriori indagini potrebbero rivelare ulteriori informazioni critiche.

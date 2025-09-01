@@ -13,7 +13,8 @@ from agents.state import AgentState
 from agents.Coordinators.memory_cleaner import memory_cleaner
 from agents.ReAct.old_files.web_scanner_agent import build_web_scanner_agent
 import time
-
+import sys
+sys.setrecursionlimit(10000)
 from agents.ReAct.ReAct_agent import build_react_agent
 
 
@@ -63,14 +64,14 @@ app = graph.compile()
 #se devo testare in locale
 #ip='127.0.0.1'
 
-ip = "192.168.1.18"
+ip = "127.0.0.1"
 extra_infos = ""
 prompt_iniziale = f"IP: {ip}\n{extra_infos}. ora inizio: {time.ctime()}"
 
 # --- Test veloce ---
 if __name__ == "__main__":
     inputs = {"messages": [HumanMessage(content=prompt_iniziale,name="User")]}
-    for step in app.stream(inputs, stream_mode="values"):
+    for step in app.stream(inputs, stream_mode="values", max_iterations=50):
         node = step.get("__node__") or step.get("__step__") or step.get('name') or "UnknownNode"
         msg = step["messages"][-1]
         content = msg.content if hasattr(msg, "content") else str(msg)
