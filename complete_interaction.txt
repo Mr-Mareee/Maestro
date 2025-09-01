@@ -6,6 +6,8 @@
 . ora inizio: Mon Sep  1 18:07:30 2025
 [UnknownNode] IP: 127.0.0.1
 . ora inizio: Mon Sep  1 18:07:30 2025
+
+
 [UnknownNode] Reconnaissance
 *** SELF-RAG DEBUG ***
 {'commands': [{'cmd': 'nmap -p 1-1000 --min-rate=5000 127.0.0.1', 'rationale': 'Utilizzando Nmap con un range di porte limitato e un rate elevato, si ottiene una scansione rapida delle porte più comuni, riducendo il tempo di esecuzione.', 'confidence': 85}], 'supported': True, 'utility': 5, 'notes': 'Questo comando permette di identificare rapidamente le porte aperte sul target, facilitando ulteriori analisi sui servizi attivi.'}
