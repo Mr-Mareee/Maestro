@@ -39,9 +39,9 @@ def build_react_agent(name):
 
     def agent_with_context(state: AgentState) -> AgentState:
         shared_report = state.get("shared_report", "Nessuna informazione precedente.")
-        messages = state.get('messages','')
+        #messages = state.get('messages','')
         # Prepara input per il ReAct agent
-        enriched_inputs = state
+        enriched_inputs = shared_report
 
         # Invoca il core ReAct agent
         result = recon_core.invoke(enriched_inputs)
