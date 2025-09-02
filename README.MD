@@ -65,12 +65,7 @@ pip install -r requirements.txt
 
 ## ▶️ Esecuzione
 
-1. Clona la repo:
-
-   ```bash
-   git clone https://github.com/Mr-Mareee/Maestro.git
-   cd Maestro
-   ```
+1. Clona la repo
 
 2. Crea un file `.env` con la tua chiave per il modello:
 
