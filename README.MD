@@ -129,6 +129,25 @@ Non deve essere utilizzato contro sistemi o reti senza autorizzazione esplicita.
 L’autore declina ogni responsabilità per un uso improprio del codice.
 
 ---
+## 📚 References
+
+- Ding, N., et al. (2023). [**PentestGPT: An LLM-powered Automatic Penetration Testing Tool**](https://aliasrobotics.com/files/PentestGPT_paper.pdf).
+
+- Minghao Shao, et al. (2024). [**CRAKEN: Cybersecurity Red-teaming Agentic Knowledge Engine**](https://arxiv.org/abs/2505.17107).
+
+- Víctor Mayoral-Vilches, et al. (2024). [**CAI: Cybersecurity AI for Autonomous Offensive Security**](https://arxiv.org/abs/2504.06017). 
+
+- Ibrahim Alshehri, et al. (2024). [**BreachSeek: LLM-Empowered Vulnerability Discovery Framework**](https://arxiv.org/abs/2409.03789).
+
+- [LangChain documentation](https://python.langchain.com)  
+- [LangGraph documentation](https://python.langchain.com/docs/langgraph)  
+- [FAISS (Facebook AI Similarity Search](https://github.com/facebookresearch/faiss)  
+- [OpenAI API documentation](https://platform.openai.com/docs)  
+- [ShellTool](https://python.langchain.com/api_reference/community/tools/langchain_community.tools.shell.tool.ShellTool.html)
+- [SSH Tool](https://medium.com/@karisallan237/agent-ssh-langchain-langgraph-paramiko-e7f52bd63725)  
+- [Original Self-rag Idea](https://par.nsf.gov/biblio/10539591)
+
+___
 
 ## 📜 Licenza
 
