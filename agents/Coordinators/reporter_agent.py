@@ -1,9 +1,7 @@
 # agents/reporter_agent.py  (oppure incolla in core_agent.py al posto del reporter attuale)
-import json, os, re
-from typing import TypedDict, Annotated, Sequence
+import json, re
 from models import get_model
-from langchain_core.messages import SystemMessage, HumanMessage,BaseMessage, AIMessage
-from langgraph.graph.message import add_messages
+from langchain_core.messages import SystemMessage, HumanMessage
 
 from prompts import REPORTER_AGENT_PROMPT
 from ..state import AgentState

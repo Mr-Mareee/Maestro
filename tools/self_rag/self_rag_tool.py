@@ -1,6 +1,6 @@
 # self_rag.py
 import os, re, json, glob
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from dotenv import load_dotenv
 from .SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE

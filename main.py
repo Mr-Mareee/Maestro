@@ -1,20 +1,18 @@
 from dotenv import load_dotenv  
+
 from langchain_core.messages import HumanMessage
-from langgraph.graph.message import add_messages
 from langgraph.graph import StateGraph, END
-from agents.ReAct.old_files.recon_agent import build_recon_agent
+
+
 from agents.Coordinators.orchestrator import orchestrator, route_from_orchestrator
 from agents.Coordinators.reporter_agent import reporter_agent
 from agents.Coordinators.final_reporter import final_reporter
-from agents.ReAct.old_files.scanning_agent import build_scanning_agent
-from agents.ReAct.old_files.exploitation_agent import build_exploit_agent
-from agents.ReAct.old_files.privesc_agent import build_privesc_agent
-from agents.state import AgentState
 from agents.Coordinators.memory_cleaner import memory_cleaner
-from agents.ReAct.old_files.web_scanner_agent import build_web_scanner_agent
+
+from agents.state import AgentState
+
 import time
-import sys
-sys.setrecursionlimit(10000)
+
 from agents.ReAct.ReAct_agent import build_react_agent
 
 
