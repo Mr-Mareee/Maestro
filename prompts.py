@@ -59,8 +59,7 @@ FINAL_REPORTER_PROMPT=(
         "- Possibili vulnerabilità\n"
         "- flag trovate\n"
         "- Considerazioni e raccomandazioni conclusive \n"
-        "- devi essere il più prolisso possibile."
-        "NON proporre azioni, NON chiedere conferme, NON eseguire comandi.\n"
+        "- massimo 2k token\n"
     )
 
 
