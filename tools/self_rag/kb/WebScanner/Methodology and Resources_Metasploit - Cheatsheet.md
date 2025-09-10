@@ -1,0 +1,23 @@
+# metasploit
+
+:warning: content of this page has been moved to [internalallthethings/command-control/metasploit](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/)
+
+- [installation](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#installation)
+- [sessions](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#sessions)
+- [background handler](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#background-handler)
+- [meterpreter - basic](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#meterpreter---basic)
+    - [generate a meterpreter](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#generate-a-meterpreter)
+    - [meterpreter webdelivery](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#meterpreter-webdelivery)
+    - [get system](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#get-system)
+    - [persistence startup](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#persistence-startup)
+    - [network monitoring](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#network-monitoring)
+    - [portforward](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#portforward)
+    - [upload / download](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#upload---download)
+    - [execute from memory](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#execute-from-memory)
+    - [mimikatz](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#mimikatz)
+    - [pass the hash - psexec](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#pass-the-hash---psexec)
+    - [use socks proxy](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#use-socks-proxy)
+- [scripting metasploit](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#scripting-metasploit)
+- [multiple transports](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#multiple-transports)
+- [best of - exploits](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#best-of---exploits)
+- [references](https://swisskyrepo.github.io/internalallthethings/command-control/metasploit/#references)

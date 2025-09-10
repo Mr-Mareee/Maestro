@@ -1,0 +1,21 @@
+# windows - amsi bypass
+
+:warning: content of this page has been moved to [internalallthethings/redteam/evasion/windows-amsi-bypass](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/)
+
+- [list amsi providers](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#list-amsi-providers)
+- [which endpoint protection is using amsi](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#which-endpoint-protection-is-using-amsi)
+- [patching amsi.dll amsiscanbuffer by rasta-mouse](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#patching-amsi.dll-amsiscanbuffer-by-rasta-mouse)
+- [dont use net webclient](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#dont-use-net-webclient)
+- [amsi scanbuffer patch from -> https://www.contextis.com/de/blog/amsi-bypass](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#amsi-scanbuffer-patch)
+- [forcing an error](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#forcing-an-error)
+- [disable script logging](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#disable-script-logging)
+- [amsi buffer patch - in memory](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#amsi-buffer-patch---in-memory)
+- [same as 6 but integer bytes instead of base64](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#same-as-6-but-integer-bytes-instead-of-base64)
+- [using matt graeber's reflection method](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#using-matt-graebers-reflection-method)
+- [using matt graeber's reflection method with wmf5 autologging bypass](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#using-matt-graebers-reflection-method-with-wmf5-autologging-bypass)
+- [using matt graeber's second reflection method](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#using-matt-graebers-second-reflection-method)
+- [using cornelis de plaa's dll hijack method](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#using-cornelis-de-plaas-dll-hijack-method")
+- [use powershell version 2 - no amsi support there](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#using-powershell-version-2)
+- [nishang all in one](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#nishang-all-in-one)
+- [adam chesters patch](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#adam-chester-patch)
+- [amsi.fail](https://swisskyrepo.github.io/internalallthethings/redteam/evasion/windows-amsi-bypass/#amsifail)

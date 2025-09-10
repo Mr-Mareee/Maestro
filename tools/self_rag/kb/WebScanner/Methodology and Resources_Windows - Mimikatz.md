@@ -1,0 +1,20 @@
+# windows - mimikatz
+
+:warning: content of this page has been moved to [internalallthethings/cheatsheets/mimikatz](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/)
+
+- [execute commands](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#execute-commands)
+- [extract passwords](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#extract-passwords)
+- [lsa protection workaround](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#lsa-protection-workaround)
+- [mini dump](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#mini-dump)
+- [pass the hash](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#pass-the-hash)
+- [golden ticket](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#golden-ticket)
+- [skeleton key](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#skeleton-key)
+- [rdp session takeover](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#rdp-session-takeover)
+- [rdp passwords](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#rdp-passwords)
+- [credential manager & dpapi](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#credential-manager--dpapi)
+    - [chrome cookies & credential](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#chrome-cookies--credential)
+    - [task scheduled credentials](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#task-scheduled-credentials)
+    - [vault](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#vault)
+- [commands list](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#commands-list)
+- [powershell version](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#powershell-version)
+- [references](https://swisskyrepo.github.io/internalallthethings/cheatsheets/mimikatz-cheatsheet/#references)
