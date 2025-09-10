@@ -6,11 +6,11 @@ from langchain_core.messages import BaseMessage
 
 class SSH_CommandInput(BaseModel):
     """Input schema for SSH command execution."""
-    command: str = Field(description="Complete shell command to execute on the remote Kali Linux machine")
-    username: str = Field(description="SSH username for the remote Kali Linux machine")
-    password: str = Field(description="SSH password for the remote Kali Linux machine")
-    hostname: str = Field(description="Hostname or IP address of the remote Kali Linux machine")
-    port: int = Field(default=22, description="SSH port of the remote Kali Linux machine, default is 22")
+    command: str = Field(description="Complete shell command to execute on the remote machine")
+    username: str = Field(description="SSH username for the remote machine")
+    password: str = Field(description="SSH password for the remote machine")
+    hostname: str = Field(description="Hostname or IP address of the remote machine")
+    port: int = Field(default=22, description="SSH port of the remote machine, default is 22")
 
 
 def connected_kali(command, username, password, hostname, port=22) -> str:
