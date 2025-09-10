@@ -62,7 +62,7 @@ class RetrievalResult:
 
 
 class SelfRAGInput(BaseModel):
-    query: str = Field(description="Query dell'agente.")
+    query: str = Field(description="Query dell'agente, dovrebbe essere semplice e minimale con poche parole.")
     shared_report: str = Field(description="Report condiviso (JSON o testo).")
     agent_role: str = Field(description="Ruolo agente che invoca (Reconnaissance, Scanning, Exploitation, PrivEsc, WebScanner).")
 
