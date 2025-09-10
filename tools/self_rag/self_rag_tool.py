@@ -3,7 +3,7 @@ import os, re, json, glob
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from dotenv import load_dotenv
-from SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE
+from .SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
@@ -62,7 +62,7 @@ class RetrievalResult:
 
 
 class SelfRAGInput(BaseModel):
-    query: str = Field(description="Query dell'agente.")
+    query: str = Field(description="Query dell'agente. Deve essere una domanda o richiesta di aiuto formata da parole chiave e poco lunga.")
     shared_report: str = Field(description="Report condiviso (JSON o testo).")
     agent_role: str = Field(description="Ruolo agente che invoca (Reconnaissance, Scanning, Exploitation, PrivEsc, WebScanner).")
 

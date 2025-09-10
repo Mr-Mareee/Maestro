@@ -14,7 +14,7 @@ def memory_cleaner(state: AgentState) -> AgentState:
     Mantiene solo gli ultimi `keep_last` intatti per continuità.
     """
     messages = state.get("messages", [])
-    keep_last = 3
+    keep_last = 10
     if len(messages) <= keep_last:
         return state
 
