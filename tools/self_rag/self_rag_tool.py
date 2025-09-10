@@ -3,7 +3,7 @@ import os, re, json, glob
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from dotenv import load_dotenv
-from .SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE
+from SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
@@ -311,7 +311,7 @@ class SelfRAG:
             "commands": refined.get("commands", []),
             "supported": supported,
             "utility": utility,
-            "notes": refined.get("notes", "")
+            "notes": refined.get("notes", ""),
         }
         print('*** SELF-RAG DEBUG ***')
         print(output)
@@ -354,7 +354,7 @@ if __name__ == "__main__":
     rag = SelfRAG()
 
     # 1) Costruisci KB per ogni sottocartella di ./kb (nome cartella = kb_name = ruolo)
-    """    kb_root = "./kb"
+    """kb_root = "./kb"
     if os.path.isdir(kb_root):
         created = rag.build_all_from_root(kb_root)
         print(f"[SelfRAG] KB create: {created}")
