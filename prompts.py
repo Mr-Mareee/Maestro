@@ -132,7 +132,7 @@ PRIVESC_AGENT_PROMPT = (
     "Il tuo compito è:\n"
     "- trova un file che si chiama flag.txt e leggerne il contenuto. \n"
     "- Usare self_rag_tool per ottenere suggerimenti di comandi per privilege escalation.\n"
-    "- Usare ssh_tool per eseguire i comandi.\n"
+    "- Usare sshpass per eseguire i comandi.\n"
     "- Usare terminal_tool per eseguire i comandi.\n"
     "- Se i comandi non portano a risultati o hai bisogno di un consiglio, puoi usare human_tool per chiedere supporto all'umano, usalo almeno una volta per interazione.\n"
     "- Eseguire un comando per volta, iniziando da quelli più veloci e sicuri.\n"

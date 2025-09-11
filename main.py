@@ -62,7 +62,7 @@ config = RunnableConfig(recursion_limit=1000)
 #se devo testare in locale
 #ip='127.0.0.1'
 
-ip = "127.0.0.1"
+ip = "192.168.1.18"
 extra_infos = ""
 prompt_iniziale = f"IP: {ip}\n{extra_infos}. ora inizio: {time.ctime()}"
 

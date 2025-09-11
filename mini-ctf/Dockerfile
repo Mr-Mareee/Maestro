@@ -25,10 +25,8 @@ RUN echo "root:iloveyou" | chpasswd
 
 # Utente peter con privilegi sudo (senza password)
 RUN useradd -m -s /bin/bash peter \
- && echo "peter:peter123!" | chpasswd \
- && usermod -aG sudo peter \
- && echo 'peter ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/010-peter-nopw \
- && chmod 440 /etc/sudoers.d/010-peter-nopw
+ && echo "peter:peter123!" | chpasswd 
+
 
 # Flag nella home di root
 RUN echo 'flag{4g3n7ic_a1_rul3z_tw1c3}' > /root/flag.txt \
