@@ -7,11 +7,12 @@ PROMPT_GENERATE_COMMANDS=(
             '  "notes": "spiegazione breve (max 50 parole)"\n'
             "}\n"
             "Regole:\n"
-            "- 1..3 comandi massimi, veloci e sicuri (no -A su nmap, no brute-force).\n"
+            "- 1..3 comandi massimi, veloci e sicuri.\n"
             "su nmap velocizza la ricerca, aggiungi --min-rate=5000"
             "- Rationale deve essere supportato da evidenze.\n"
             "- Se non hai evidenze sufficienti, proponi prima un comando di enumerazione.\n"
             "- i comandi devono essere inerenti all'agente che li richiede. non proporre nmap a webscanner e non proporre curl a reconnaissance. privilege escalation si occupa principalmente di controllo file e directory per poi leggere la flag.txt\n"
+            "- i comandi generati non devono essere uguali tra di loro\n"
         )
 
 PROMPT_UTILITY_GRADER="Dai un voto 1..5 all'utilità dell'OUTPUT rispetto alla QUERY. Rispondi solo con un numero."
