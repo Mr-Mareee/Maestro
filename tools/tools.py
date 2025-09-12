@@ -8,9 +8,9 @@ shell_tool = ShellTool(description="Esegue comandi shell non interattivi  sul si
 
 
 tools ={
-    "PrivilegeEscalation": [shell_tool,self_rag_tool,human_tool,ssh_tool],
+    "PrivilegeEscalation": [shell_tool,self_rag_tool,human_tool],
     "Reconnaissance": [shell_tool,self_rag_tool,human_tool],
-    "WebScanner": [shell_tool,self_rag_tool,human_tool,ssh_tool],
+    "WebScanner": [shell_tool,self_rag_tool,human_tool],
 }
 
 

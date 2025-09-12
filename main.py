@@ -8,7 +8,7 @@ from agents.Coordinators.orchestrator import orchestrator, route_from_orchestrat
 from agents.Coordinators.reporter_agent import reporter_agent
 from agents.Coordinators.final_reporter import final_reporter
 from agents.Coordinators.memory_cleaner import memory_cleaner
-
+from langchain_core.runnables import RunnableConfig
 from agents.state import AgentState
 
 import time
@@ -57,19 +57,19 @@ graph.add_edge("MemoryCleaner","Orchestrator")
 graph.add_edge("FinalReporter", END)
 
 app = graph.compile()
-
+config = RunnableConfig(recursion_limit=1000)
 
 #se devo testare in locale
 #ip='127.0.0.1'
 
-ip = "127.0.0.1"
+ip = "192.168.1.18"
 extra_infos = ""
 prompt_iniziale = f"IP: {ip}\n{extra_infos}. ora inizio: {time.ctime()}"
 
 # --- Test veloce ---
 if __name__ == "__main__":
     inputs = {"messages": [HumanMessage(content=prompt_iniziale,name="User")]}
-    for step in app.stream(inputs, stream_mode="values", max_iterations=50):
+    for step in app.stream(inputs, stream_mode="values", config=config):
         node = step.get("__node__") or step.get("__step__") or step.get('name') or "UnknownNode"
         msg = step["messages"][-1]
         content = msg.content if hasattr(msg, "content") else str(msg)

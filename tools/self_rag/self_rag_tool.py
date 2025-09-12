@@ -3,13 +3,15 @@ import os, re, json, glob
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 from dotenv import load_dotenv
-from SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE
+from .SF_prompts import PROMPT_RELEVANCE_GRADER, PROMPT_SUPPORT_CHECKER, PROMPT_UTILITY_GRADER, PROMPT_GENERATE_COMMANDS, PROMPT_CRITIQUE
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from pydantic import BaseModel, Field
 from langchain.tools import StructuredTool
+    
+load_dotenv()
 
 try:
     from pypdf import PdfReader
@@ -53,7 +55,7 @@ def _json_first_obj(s: str) -> Optional[dict]:
 
 
 # --------------------------- Data structures -------------------------
-
+KB_PATH = os.getenv("SELF_RAG_KB_PATH")# cartella con sottocartelle per ruolo
 @dataclass
 class RetrievalResult:
     content: str
@@ -62,7 +64,11 @@ class RetrievalResult:
 
 
 class SelfRAGInput(BaseModel):
+<<<<<<< HEAD
     query: str = Field(description="Query dell'agente, dovrebbe essere semplice e minimale con poche parole.")
+=======
+    query: str = Field(description="Query dell'agente. Deve essere una domanda o richiesta di aiuto formata da parole chiave e poco lunga.")
+>>>>>>> tests
     shared_report: str = Field(description="Report condiviso (JSON o testo).")
     agent_role: str = Field(description="Ruolo agente che invoca (Reconnaissance, Scanning, Exploitation, PrivEsc, WebScanner).")
 
@@ -82,7 +88,7 @@ class SelfRAG:
         self,
         embedding_model: str = "text-embedding-3-small",
         llm_model: str = "gpt-4o-mini",
-        persist_root: str = "vector_dbs",
+        persist_root: str = os.getenv("SELF_RAG_KB_PATH"),
         k: int = 5,
         rel_threshold: float = 0.0
     ):
@@ -152,12 +158,13 @@ class SelfRAG:
         return True
 
     def retrieve(self, query: str, kb_name: str) -> List[RetrievalResult]:
+        print(f"[SelfRAG] Retrieving from KB '{kb_name}' for query: {query}")
         if kb_name not in self.vector_dbs:
             # prova a caricare da disco
             try:
                 self.load_vector_db(kb_name)
             except Exception:
-                return []
+                raise ValueError(f"KB '{kb_name}' non caricabile o inesistente.")
         vs = self.vector_dbs[kb_name]
         hits = vs.similarity_search_with_score(query, k=self.k)
         return [
@@ -292,11 +299,16 @@ class SelfRAG:
         passages: List[RetrievalResult] = []
         if do_ret:
             kb_name = agent_role if agent_role in self.vector_dbs or os.path.isdir(os.path.join(self.persist_root, agent_role)) else None
+            print(f"[SelfRAG] Agent role: '{agent_role}' -> KB name: '{kb_name}'")
             if kb_name:
+                print(f"[SelfRAG] Using KB '{kb_name}' for role '{agent_role}'")
                 passages = self.retrieve(query, kb_name)
-
+        print(f"[SelfRAG] Retrieved {len(passages)} passages for role '{agent_role}'")
         # 3) Relevance grading
         passages = self.relevance_grader(query, passages)
+        for i, p in enumerate(passages, 1):
+            print(f"[DOC {i}] score={p.score:.4f} source={p.metadata.get('source','?')}")
+            print(p.content[:500], "\n---\n")
 
         # 4) First draft commands
         draft = self.generate_commands(query, shared_report, agent_role, passages)
@@ -362,9 +374,9 @@ if __name__ == "__main__":
         print("[SelfRAG] Nessuna cartella ./kb trovata. Creala per usare il retrieval per-ruolo.")
     """
     # 2) Parametri di test (come se fosse un agente che invoca)
-    PROMPT = "ho un sito http che usa php, come procederesti?"
-    ROLE   = "WebScanner"  # oppure "Scanning", "Exploitation", "PrivilegeEscalation"
-    REPORT = '{"target":"127.0.0.1","services":[{"port":80,"service":"http"}],"os":"windows"}'
+    PROMPT = "comandi veloci per reconnaissance iniziale target 192.168.1.18"
+    ROLE   = "Reconnaissance"  # oppure "Scanning", "Exploitation", "PrivilegeEscalation"
+    REPORT = '{"start_time": "Thu Sep 11 18:15:25 2025", "target": "192.168.1.18", "phases": [], "found_credentials": [], "services": [], "web_findings": {"dirs": [], "alerts": []}, "vuln_hypotheses": [], "access": {"user_shell": false, "privs": "none"}, "OS": "", "flags_found": 0, "notes": [], "wrong_paths": [], "executed_commands": [], "next_phase_hint": null}'
 
     # 3) Esegui Self-RAG
     result = rag.run(query=PROMPT, shared_report=REPORT, agent_role=ROLE)

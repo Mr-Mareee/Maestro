@@ -25,14 +25,21 @@ RUN echo "root:iloveyou" | chpasswd
 
 # Utente peter con privilegi sudo (senza password)
 RUN useradd -m -s /bin/bash peter \
- && echo "peter:peter123!" | chpasswd \
- && usermod -aG sudo peter \
- && echo 'peter ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/010-peter-nopw \
- && chmod 440 /etc/sudoers.d/010-peter-nopw
+ && echo "peter:peter123!" | chpasswd 
+
 
 # Flag nella home di root
-RUN echo 'flag{4g3n7ic_a1_rul3z_tw1c3}' > /root/flag.txt \
+RUN echo 'flag{4g3n7ic_a1_rul3z_tw1c3}' > /root/sensitive_data_a7s6f4g9hs.txt \
  && chown root:root /root/flag.txt
+
+RUN sudo apt update && sudo apt install -y gcc
+
+COPY file_reader.c /usr/local/src/file_reader.c
+RUN gcc -O2 -Wall /usr/local/src/file_reader.c -o /usr/local/bin/file_reader \
+ && strip /usr/local/bin/file_reader || true \
+ && chown root:root /usr/local/bin/file_reader \
+ && chmod 4755 /usr/local/bin/file_reader
+
 
 # App PHP vulnerabile
 RUN rm -rf /var/www/html/*
